@@ -2,7 +2,7 @@ Letterpress.js by Team Dairou
 =============================
 A JavaScript implementation of the word game Letterpress for iOS.
 
-Letterpress Game Rules
+## Letterpress Game Rules
 
 1. Using an opponent's tile gives you one point and takes away one point from your opponent. These tiles will also change in color to your side's color.
 2. If a colored tile is surrounded on all 4 sides by tiles of similar color, it will become a darker color. If you use this tile, you will receive no points.
