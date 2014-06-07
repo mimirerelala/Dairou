@@ -67,3 +67,12 @@ function getDragIndex(mouseX, mouseY) {
             dragIndex = i;
     return dragIndex;
 }
+
+ // Translates the mouse position to canvas coodrinates
+function getMousePos(canvas, evt) {
+    var bRect = canvas.getBoundingClientRect();
+    return {
+        X: (evt.clientX - bRect.left) * (canvas.width / bRect.width),
+        Y: (evt.clientY - bRect.top) * (canvas.height / bRect.height)
+    };
+}
