@@ -12,8 +12,4 @@ A JavaScript implementation of the word game Letterpress for iOS.
 6. The game ends when all the tiles are used. The winner is the player with more points than the other.
 
 ---
-Letterpress is a trademark of atebits.
-* * *
-Letterpress is a trademark of atebits.
-- - - - 
-Letterpress is a trademark of atebits.
+Letterpress is a trademark of [atebits](http://www.atebits.com/letterpress/).
