@@ -104,7 +104,7 @@ function onTimerTick() {
         // Snap the tile to its final position
         dragTile.X = dragTile.targetPosX;
         dragTile.Y = dragTile.targetPosY;
-        
+
         dragTile.isMoving = false;
         wasDragged = false;
         // Stop timer:
