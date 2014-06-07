@@ -9,6 +9,7 @@ function mouseDownListener(evt) {
         window.addEventListener("mousemove", mouseMoveListener, false);
 
         dragTile = tiles[dragIndex];
+        dragTile.isMoving = true;
 
         // We now place the currently dragged tile on top by placing it last in the array.
         tiles.push(tiles.splice(dragIndex, 1)[0]);
@@ -37,6 +38,7 @@ function mouseUpListener(evt) {
     window.removeEventListener("mouseup", mouseUpListener, false);
     if (isDragging) {
         isDragging = false;
+        dragTile.isMoving = false;
         // Make the tile return to its intial position
         dragTile.targetPosX = dragTile.initalX;
         dragTile.targetPosY = dragTile.initalY;
