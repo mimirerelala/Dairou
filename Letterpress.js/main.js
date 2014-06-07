@@ -6,6 +6,8 @@ var isDragging;
 var timer;
 var dragTile;
 var wasDragged;
+var wordToSubmit = '';
+var words = [];
 
 function main() {
 
@@ -18,8 +20,8 @@ function main() {
 
 function prepareCanvas() {
     canvas = document.createElement("canvas");
-    canvas.width = 1024;
-    canvas.height = 768;
+    canvas.width = 800;
+    canvas.height = 600;
     canvas.style.position = 'absolute';
     canvas.style.left = (document.documentElement.clientWidth - canvas.width) / 2 + 'px';
 
@@ -52,7 +54,7 @@ function makeTiles(boardLetters) {
     var darkRed = "rgb(255, 67, 47)";
     var darkBlue = "rgb(0, 162, 255)";
 
-    var tileSize = 114; // pixels
+    var tileSize = 85; // pixels
     var tileMargin = 1; // pixels
 
     boardX = (canvas.width - 5 * (tileSize + tileMargin)) / 2;
@@ -70,4 +72,14 @@ function makeTiles(boardLetters) {
     }
 
     return tiles;
+}
+
+
+
+function addToWord(letter) {
+    wordToSubmit += letter;
+}
+
+function addWord(wordToSubmit) {
+    words.push(wordToSubmit);
 }
