@@ -1,5 +1,5 @@
  // The Tile class
-function Tile(text, color, posX, posY, size) {
+function Tile(text, color, posX, posY, size, coords) {
     this.initalX = posX;
     this.initalY = posY;
     this.X = posX;
@@ -11,6 +11,8 @@ function Tile(text, color, posX, posY, size) {
     this.fontFamiliy = "'Calibri'";
     this.fontColor = 'rgb(35, 35, 35)';
     this.font = "bold " + this.fontSize + "px " + this.fontFamiliy;
+    this.coords = coords;
+    this.isMoving = false;
 }
 
  // Checks if the coordinates supplied are inside the tile

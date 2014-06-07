@@ -65,8 +65,8 @@ function makeTiles(numTiles, boardLetters) {
 
         var rand = Math.random();
         tempColor = rand < 0.33 ? red : rand < 0.66 ? blue : gray;
-
-        tiles.push(new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize));
+        posCoords=[i%5,~~(i / 5)];//save matrix coordinas
+        tiles.push(new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize, posCoords));
     }
 
     return tiles;
