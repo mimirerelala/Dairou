@@ -1,4 +1,6 @@
-Dairou
-======
+Letterpress.js by Team Dairou
+=============================
+A JavaScript implementation of the word game Letterpress for iOS.
 
-Telerik Teamwork JS UI &amp; DOM 
+
+Letterpress is a trademark of atebits.
