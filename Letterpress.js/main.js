@@ -27,8 +27,8 @@ function prepareCanvas() {
 }
 
 function prepareBoard() {
-    var numTiles = 25;
-    var boardLetters = "GMYONIWNXGETSMZWZZLENTEGI";
+    var boardLetters = generateRandomLeters();
+    var numTiles = boardLetters.length;
     tiles = makeTiles(numTiles, boardLetters);
 }
 
