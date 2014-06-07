@@ -57,3 +57,13 @@ function mouseMoveListener(evt) {
     dragTile.targetPosX = Math.min(Math.max(mousePos.X - dragTile.clickOffsetX, minX), maxX);
     dragTile.targetPosY = Math.min(Math.max(mousePos.Y - dragTile.clickOffsetY, minY), maxY);
 }
+
+ // Returns the index of the tile being clicked or -1 if no tile was clicked
+function getDragIndex(mouseX, mouseY) {
+    var dragIndex = -1;
+    // the variable will be overwritten to ensure only the topmost tile is dragged
+    for (var i = 0; i < tiles.length; i++)
+        if (tiles[i].isClicked(mouseX, mouseY))
+            dragIndex = i;
+    return dragIndex;
+}
