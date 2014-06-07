@@ -8,6 +8,7 @@ var dragTile;
 var wasDragged;
 var wordToSubmit = '';
 var words = [];
+var wordHolder; // holds the letters
 
 function main() {
 
@@ -32,6 +33,7 @@ function prepareCanvas() {
 function prepareBoard() {
     var boardLetters = generateRandomLeters();
     tiles = makeTiles(boardLetters);
+    wordHolder = new WordHolder(0, 0);
 }
 
 // Renders the canvas to screen

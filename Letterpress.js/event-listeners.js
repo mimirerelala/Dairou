@@ -49,6 +49,8 @@ function mouseUpListener(evt) {
             dragTile.targetPosX = 0;
             dragTile.targetPosY = 0;
             addToWord(dragTile.text);
+
+            wordHolder.addTile(dragTile);
         }
         window.removeEventListener("mousemove", mouseMoveListener, false);
     }

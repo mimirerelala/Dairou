@@ -1,35 +1,21 @@
- // The Tile class
- function WordHolder(text, color, posX, posY, size, coords) {
-     this.initalX = posX;
-     this.initalY = posY;
+ // A class to hold the top row of letters that form the word
+ function WordHolder(posX, posY) {
      this.X = posX;
      this.Y = posY;
-     this.color = color;
-     this.size = size;
-     this.text = text;
-     this.fontSize = +(0.75 * size);
-     this.fontFamiliy = "'Calibri'";
-     this.fontColor = 'rgb(35, 35, 35)';
-     this.font = "bold " + this.fontSize + "px " + this.fontFamiliy;
-     this.coords = coords;
-     this.isMoving = false;
+     this.wordLetters = [];
  }
 
- // Checks if the coordinates supplied are inside the tile
- WordHolder.prototype.isClicked = function (clickX, clickY) {
-     return ((clickX > this.X) && (clickX < this.X + this.size) && (clickY > this.Y) && (clickY < this.Y + this.size));
+ // Returns the letters as string
+ WordHolder.prototype.word = function () {
+     return this.wordLetters.join('');
  };
 
- // Draws the tile (a colored square with a letter on top)
- WordHolder.prototype.draw = function (context) {
-     context.fillStyle = this.color;
-     context.fillRect(this.X, this.Y, this.size, this.size);
+ // Clears the letters
+ WordHolder.prototype.clear = function () {
+     this.wordLetters = [];
+ };
 
-     context.fillStyle = this.fontColor;
-     context.font = this.font;
-     context.fillText(
-         this.text,
-         this.X + (this.size / 2) - (context.measureText(this.text).width / 2),
-         this.Y + (this.size / 2) + this.fontSize / 4
-     );
+ // Adds a tile
+ WordHolder.prototype.addTile = function (tile) {
+     this.wordLetters.push(tile);
  };
