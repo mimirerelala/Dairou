@@ -67,10 +67,15 @@ function makeTiles(boardLetters) {
         tempX = boardX + col * (tileSize + tileMargin);
         tempY = boardY + row * (tileSize + tileMargin);
 
+        boardPos = {
+            row: row,
+            col: col
+        };
+
         var rand = Math.random();
         tempColor = rand < 0.33 ? red : rand < 0.66 ? blue : gray;
 
-        tiles.push(new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize));
+        tiles.push(new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize, boardPos));
     }
 
     return tiles;

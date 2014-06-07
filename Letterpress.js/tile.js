@@ -1,5 +1,5 @@
  // The Tile class
- function Tile(text, color, posX, posY, size, coords) {
+ function Tile(text, color, posX, posY, size, boardPos) {
      this.initalX = posX;
      this.initalY = posY;
      this.X = posX;
@@ -11,7 +11,7 @@
      this.fontFamiliy = "'Calibri'";
      this.fontColor = 'rgb(35, 35, 35)';
      this.font = "bold " + this.fontSize + "px " + this.fontFamiliy;
-     this.coords = coords;
+     this.boardPos = boardPos;
      this.isMoving = false;
  }
 
