@@ -58,12 +58,14 @@ function makeTiles(boardLetters) {
     var tileMargin = 1; // pixels
 
     boardX = (canvas.width - 5 * (tileSize + tileMargin)) / 2;
-    boardY = (canvas.height - 5 * (tileSize + tileMargin)) - tileSize / 10;
+    boardY = (canvas.height - 5 * (tileSize + tileMargin)) - tileSize / 4;
 
     tiles = [];
     for (i = 0; i < boardLetters.length; i++) {
-        tempX = boardX + (i % 5) * (tileSize + tileMargin);
-        tempY = boardY + (~~(i / 5) * (tileSize + tileMargin));
+        var row = ~~ (i / 5);
+        var col = i % 5;
+        tempX = boardX + col * (tileSize + tileMargin);
+        tempY = boardY + row * (tileSize + tileMargin);
 
         var rand = Math.random();
         tempColor = rand < 0.33 ? red : rand < 0.66 ? blue : gray;
