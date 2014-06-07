@@ -48,6 +48,7 @@ function mouseUpListener(evt) {
             // Make the tile go up
             dragTile.targetPosX = 0;
             dragTile.targetPosY = 0;
+            addToWord(dragTile.text);
         }
         window.removeEventListener("mousemove", mouseMoveListener, false);
     }
@@ -103,7 +104,7 @@ function onTimerTick() {
         // Snap the tile to its final position
         dragTile.X = dragTile.targetPosX;
         dragTile.Y = dragTile.targetPosY;
-        addToWord(dragTile.text);
+        
         dragTile.isMoving = false;
         wasDragged = false;
         // Stop timer:
