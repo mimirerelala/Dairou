@@ -32,7 +32,7 @@ function prepareBoard() {
     tiles = makeTiles(boardLetters);
 }
 
- // Renders the canvas to screen
+// Renders the canvas to screen
 function drawScreen() {
     context.fillStyle = 'rgb(240, 239, 236)';
     context.fillRect(0, 0, canvas.width, canvas.height);
@@ -41,7 +41,7 @@ function drawScreen() {
         tiles[i].draw(context);
 }
 
-
+// Returns an array of Tile objects
 function makeTiles(boardLetters) {
     var i;
     var tempX, tempY, tempColor;
