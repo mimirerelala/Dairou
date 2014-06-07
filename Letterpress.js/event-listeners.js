@@ -6,6 +6,7 @@ function mouseDownListener(evt) {
 
     if (dragIndex > -1) {
         isDragging = true;
+        wasDragged = false; // not yet
         window.addEventListener("mousemove", mouseMoveListener, false);
 
         dragTile = tiles[dragIndex];
@@ -87,6 +88,10 @@ function onTimerTick() {
     // Update the moving tile position
     dragTile.X += easeAmount * (dragTile.targetPosX - dragTile.X);
     dragTile.Y += easeAmount * (dragTile.targetPosY - dragTile.Y);
+    
+    if ((Math.abs(dragTile.X - dragTile.initalX) > 5) || (Math.abs(dragTile.Y - dragTile.initalY) > 0.1)) {
+        wasDragged = true;
+    }
 
     // Stop the timer when the target position is reached (close enough)
     if ((!isDragging) && (Math.abs(dragTile.X - dragTile.targetPosX) < 0.1) && (Math.abs(dragTile.Y - dragTile.targetPosY) < 0.1)) {
