@@ -39,9 +39,16 @@ function mouseUpListener(evt) {
     window.removeEventListener("mouseup", mouseUpListener, false);
     if (isDragging) {
         isDragging = false;
-        // Make the tile return to its intial position
-        dragTile.targetPosX = dragTile.initalX;
-        dragTile.targetPosY = dragTile.initalY;
+
+        if (wasDragged) {
+            // Make the tile return to its intial position
+            dragTile.targetPosX = dragTile.initalX;
+            dragTile.targetPosY = dragTile.initalY;
+        } else {
+            // Make the tile go up
+            dragTile.targetPosX = 0;
+            dragTile.targetPosY = 0;
+        }
         window.removeEventListener("mousemove", mouseMoveListener, false);
     }
 }
@@ -60,7 +67,7 @@ function mouseMoveListener(evt) {
     dragTile.targetPosY = Math.min(Math.max(mousePos.Y - dragTile.clickOffsetY, minY), maxY);
 }
 
- // Returns the index of the tile being clicked or -1 if no tile was clicked
+// Returns the index of the tile being clicked or -1 if no tile was clicked
 function getDragIndex(mouseX, mouseY) {
     var dragIndex = -1;
     // the variable will be overwritten to ensure only the topmost tile is dragged
@@ -70,7 +77,7 @@ function getDragIndex(mouseX, mouseY) {
     return dragIndex;
 }
 
- // Translates the mouse position to canvas coodrinates
+// Translates the mouse position to canvas coodrinates
 function getMousePos(canvas, evt) {
     var bRect = canvas.getBoundingClientRect();
     return {
@@ -79,17 +86,15 @@ function getMousePos(canvas, evt) {
     };
 }
 
-
-
- // Runs while the timer is ticking
+// Runs while the timer is ticking
 function onTimerTick() {
     // The next variable controls the lag in the tile movement (from 0 to 1)
     var easeAmount = 0.2;
     // Update the moving tile position
     dragTile.X += easeAmount * (dragTile.targetPosX - dragTile.X);
     dragTile.Y += easeAmount * (dragTile.targetPosY - dragTile.Y);
-    
-    if ((Math.abs(dragTile.X - dragTile.initalX) > 5) || (Math.abs(dragTile.Y - dragTile.initalY) > 0.1)) {
+
+    if ((Math.abs(dragTile.X - dragTile.initalX) > 5) || (Math.abs(dragTile.Y - dragTile.initalY) > 5)) {
         wasDragged = true;
     }
 
@@ -98,7 +103,9 @@ function onTimerTick() {
         // Snap the tile to its final position
         dragTile.X = dragTile.targetPosX;
         dragTile.Y = dragTile.targetPosY;
+
         dragTile.isMoving = false;
+        wasDragged = false;
         // Stop timer:
         clearInterval(timer);
     }
