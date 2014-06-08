@@ -1,26 +1,27 @@
  // The Tile class
-function Tile(text, color, posX, posY, size, coords) {
-    this.initalX = posX;
-    this.initalY = posY;
-    this.X = posX;
-    this.Y = posY;
-    this.color = color;
-    this.size = size;
-    this.text = text;
-    this.fontSize = +(0.75 * size);
-    this.fontFamiliy = "'Calibri'";
-    this.fontColor = 'rgb(35, 35, 35)';
-    this.font = "bold " + this.fontSize + "px " + this.fontFamiliy;
-    this.coords = coords;
-    this.isMoving = false;
-}
+ function Tile(text, color, posX, posY, size, boardPos) {
+     this.initalX = posX;
+     this.initalY = posY;
+     this.X = posX;
+     this.Y = posY;
+     this.color = color;
+     this.size = size;
+     this.text = text;
+     this.fontSize = +(0.75 * size);
+     this.fontFamiliy = "'Calibri'";
+     this.fontColor = 'rgb(35, 35, 35)';
+     this.font = "bold " + this.fontSize + "px " + this.fontFamiliy;
+     this.boardPos = boardPos;
+     this.isMoving = false;
+ }
 
  // Checks if the coordinates supplied are inside the tile
-Tile.prototype.isClicked = function (clickX, clickY) {
-    return ((clickX > this.X) && (clickX < this.X + this.size) && (clickY > this.Y) && (clickY < this.Y + this.size));
-};
+ Tile.prototype.isClicked = function (clickX, clickY) {
+     return ((clickX > this.X) && (clickX < this.X + this.size) && (clickY > this.Y) && (clickY < this.Y + this.size));
+ };
 
  // Draws the tile (a colored square with a letter on top)
+<<<<<<< HEAD
 Tile.prototype.draw = function (context) {
     context.fillStyle = this.color;
     if(!this.isMoving){
@@ -35,14 +36,17 @@ Tile.prototype.draw = function (context) {
         context.quadraticCurveTo(this.x + 10, this.y + 140, this.x, this.y);//5
       //  context.stroke();
     }
+=======
+ Tile.prototype.draw = function (context) {
+     context.fillStyle = this.color;
+     context.fillRect(this.X, this.Y, this.size, this.size);
+>>>>>>> 126fa37bba5bf4482999f5d160acbc377865892f
 
-    context.fillStyle = this.fontColor;
-    context.font = this.font;
-    context.fillText(
-        this.text,
-        this.X + (this.size / 2) - (context.measureText(this.text).width / 2),
-        this.Y + (this.size / 2) + this.fontSize / 4
-    );
-};
-
- // Returns an array of Tile objects
+     context.fillStyle = this.fontColor;
+     context.font = this.font;
+     context.fillText(
+         this.text,
+         this.X + (this.size / 2) - (context.measureText(this.text).width / 2),
+         this.Y + (this.size / 2) + this.fontSize / 4
+     );
+ };
