@@ -23,7 +23,18 @@ Tile.prototype.isClicked = function (clickX, clickY) {
  // Draws the tile (a colored square with a letter on top)
 Tile.prototype.draw = function (context) {
     context.fillStyle = this.color;
-    context.fillRect(this.X, this.Y, this.size, this.size);
+    if(!this.isMoving){
+        context.fillRect(this.X, this.Y, this.size, this.size);
+    }
+    else {
+        context.beginPath();//
+        context.moveTo(this.x, this.y);//1
+        context.lineTo(this.x + 160, this.y);//2
+        context.quadraticCurveTo((this.x + 160) + 10, this.y + 140, (this.x + 160) + 40, this.y + 150);//3
+        context.quadraticCurveTo((this.x + 160) + 10, this.y + 140, this.x + 40, this.y + 175);//4
+        context.quadraticCurveTo(this.x + 10, this.y + 140, this.x, this.y);//5
+      //  context.stroke();
+    }
 
     context.fillStyle = this.fontColor;
     context.font = this.font;

@@ -5,6 +5,7 @@ var tiles;
 var isDragging;
 var timer;
 var dragTile;
+var wasDragged;
 
 function main() {
 
@@ -70,25 +71,4 @@ function makeTiles(numTiles, boardLetters) {
     }
 
     return tiles;
-}
-
-
- // Runs while the timer is ticking
-function onTimerTick() {
-    // The next variable controls the lag in the tile movement (from 0 to 1)
-    var easeAmount = 0.2;
-    // Update the moving tile position
-    dragTile.X += easeAmount * (dragTile.targetPosX - dragTile.X);
-    dragTile.Y += easeAmount * (dragTile.targetPosY - dragTile.Y);
-
-    // Stop the timer when the target position is reached (close enough)
-    if ((!isDragging) && (Math.abs(dragTile.X - dragTile.targetPosX) < 0.1) && (Math.abs(dragTile.Y - dragTile.targetPosY) < 0.1)) {
-        // Snap the tile to its final position
-        dragTile.X = dragTile.targetPosX;
-        dragTile.Y = dragTile.targetPosY;
-        dragTile.isMoving = false;
-        // Stop timer:
-        clearInterval(timer);
-    }
-    drawScreen();
 }
