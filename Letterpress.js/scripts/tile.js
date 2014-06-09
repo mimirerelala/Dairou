@@ -1,9 +1,11 @@
 // The Tile class
-function Tile(text, color, posX, posY, size, coords) {
+function Tile(text, color, posX, posY, size, coords, row =0; col = 0) {
     this.initalX = posX;
     this.initalY = posY;
     this.X = posX;
     this.Y = posY;
+    this.row = row;
+    this.col = col;
     this.color = color;
     this.size = size;
     this.text = text;
