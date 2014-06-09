@@ -6,9 +6,6 @@ var isDragging;
 var timer;
 var dragTile;
 var wasDragged;
-var wordToSubmit = '';
-var words = [];
-var wordHolder; // holds the letters
 
 function main() {
 
@@ -21,8 +18,8 @@ function main() {
 
 function prepareCanvas() {
     canvas = document.createElement("canvas");
-    canvas.width = 800;
-    canvas.height = 600;
+    canvas.width = 1024;
+    canvas.height = 768;
     canvas.style.position = 'absolute';
     canvas.style.left = (document.documentElement.clientWidth - canvas.width) / 2 + 'px';
 
@@ -31,12 +28,12 @@ function prepareCanvas() {
 }
 
 function prepareBoard() {
-    var boardLetters = generateRandomLeters();
-    tiles = makeTiles(boardLetters);
-    wordHolder = new WordHolder(0, 0);
+    var numTiles = 25;
+    var boardLetters = "GMYONIWNXGETSMZWZZLENTEGI";
+    tiles = makeTiles(numTiles, boardLetters);
 }
 
-// Renders the canvas to screen
+ // Renders the canvas to screen
 function drawScreen() {
     context.fillStyle = 'rgb(240, 239, 236)';
     context.fillRect(0, 0, canvas.width, canvas.height);
@@ -45,8 +42,8 @@ function drawScreen() {
         tiles[i].draw(context);
 }
 
-// Returns an array of Tile objects
-function makeTiles(boardLetters) {
+
+function makeTiles(numTiles, boardLetters) {
     var i;
     var tempX, tempY, tempColor;
     var boardX, boardY;
@@ -56,39 +53,22 @@ function makeTiles(boardLetters) {
     var darkRed = "rgb(255, 67, 47)";
     var darkBlue = "rgb(0, 162, 255)";
 
-    var tileSize = 85; // pixels
+    var tileSize = 114; // pixels
     var tileMargin = 1; // pixels
 
     boardX = (canvas.width - 5 * (tileSize + tileMargin)) / 2;
-    boardY = (canvas.height - 5 * (tileSize + tileMargin)) - tileSize / 4;
+    boardY = (canvas.height - 5 * (tileSize + tileMargin)) - tileSize / 10;
 
     tiles = [];
-    for (i = 0; i < boardLetters.length; i++) {
-        var row = ~~ (i / 5);
-        var col = i % 5;
-        tempX = boardX + col * (tileSize + tileMargin);
-        tempY = boardY + row * (tileSize + tileMargin);
-
-        boardPos = {
-            row: row,
-            col: col
-        };
+    for (i = 0; i < numTiles; i++) {
+        tempX = boardX + (i % 5) * (tileSize + tileMargin);
+        tempY = boardY + (~~(i / 5) * (tileSize + tileMargin));
 
         var rand = Math.random();
         tempColor = rand < 0.33 ? red : rand < 0.66 ? blue : gray;
 
-        tiles.push(new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize, boardPos));
+        tiles.push(new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize));
     }
 
     return tiles;
-}
-
-
-
-function addToWord(letter) {
-    wordToSubmit += letter;
-}
-
-function addWord(wordToSubmit) {
-    words.push(wordToSubmit);
 }
