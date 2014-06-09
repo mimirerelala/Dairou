@@ -27,8 +27,8 @@ function updateColors(matrix, wordTiles, player, oponent) {
 	var defaulColor = 'gray';
     console.log(wordTiles.length + "length");
 	//get the correct color variables and start filling new values
-	for (var i = 0; i < wordTiles.length; i++) {
-		letterCoords = wordTiles[i].coords;
+	for (iTile in wordTiles) {
+		letterCoords = iTile.coords;
         console.log(i);
         console.log(matrix[letterCoords[0]][letterCoords[1]]);
 		if ((matrix[letterCoords[0]][letterCoords[1]]==defaulColor)||(matrix[letterCoords[0]][letterCoords[1]]==oponent.lightColor)) {
@@ -104,6 +104,6 @@ word[4] = new Tile('g','blue',30,30,10,[1,0]);
 //console.log(m1);
 
 
-m1 = updateColors(matrix1,word, Player2,Player1);
+//m1 = updateColors(matrix1,word, Player2,Player1);
 
 console.log("m1" + m1);
