@@ -42,18 +42,31 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
 		}
 	}
 
+	for (var iTile in wordTiles) {
+		var j = wordTiles[iTile].row;
+		var k = wordTiles[iTile].col;
+		console.log(j + "       j k        " + k);
+		if(isSurrounded(matrix, j, k, curPlayer)){
+			matrix[j][k]=curPlayer.darkColor;
+		}
+		
+	}
 	for (var j = 0; j < matrix.length; j++) {
 		for (var k = 0; k < matrix[0].length; k++) {
-			if(isSurrounded(matrix, j, k, curPlayer)){
-				matrix[j][k]=curPlayer.darkColor;
-			}
-			else if (matrix[j][k]==curPlayer.darkColor){
-				matrix[j][k] = curPlayer.lightColor;
-
+			if (matrix[j][k]==curPlayer.darkColor){
+				if (!isSurrounded(matrix, j, k, curPlayer)){
+					console.log("cleeearinng.....")
+					matrix[j][k] = curPlayer.lightColor;
+				}
 			}
 			else if(matrix[j][k]==oponent.darkColor){
-				matrix[j][k] = oponent.lightColor;
+				if (!isSurrounded(matrix, j, k, oponent)){
+					matrix[j][k] = oponent.lightColor;
+				}
             }
+            else if(isSurrounded(matrix, j, k, oponent)){
+				matrix[j][k]=oponent.darkColor;
+			}
 		}
 	}
 	return matrix;
@@ -63,7 +76,6 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
 function isSurrounded(arrayIn, xCoord,yCoord, playerIn) {
 	var lenY = arrayIn.length;//rows
 	var lenX = arrayIn[0].length;//cols
-	console.log(lenX + "  lenxxxx " )
 	var endLine = 0;//get array boundaries, keep indices within the array
 	var endX = lenX-1;
 	var endY = lenY-1;
@@ -112,6 +124,9 @@ word = new Array();
 
 word[0] = new Tile('g','gray',30,30,10,4,1);
 word[1] = new Tile('g','red',30,30,10,3,1);
+word[6] = new Tile('g','red',30,30,10,3,0);
+word[7] = new Tile('g','red',30,30,10,4,0);
+
 word[2] = new Tile('g','blue',30,30,10,0,0);
 word[3] = new Tile('g','blue',30,30,10,0,1);
 word[4] = new Tile('g','blue',30,30,10,1,0);
