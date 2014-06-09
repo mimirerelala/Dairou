@@ -20,23 +20,28 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
 	//when surrounding a card with their colors, 
 	//use wordTiles array of Tiles objects , both players and a 
 	//color matrix as an input
-	console.log(curPlayer.lightColor);
-	console.log(curPlayer.darkColor);
-	console.log(oponent.lightColor);
-	console.log(oponent.darkColor);
+	//console.log(curPlayer.lightColor);
+	//console.log(curPlayer.darkColor);
+	//console.log(oponent.lightColor);
+	//console.log(oponent.darkColor);
 	var defaultColor = 'gray';
-    console.log(wordTiles.length + " length " + typeof(wordTiles[0].row));
+    //console.log(wordTiles.length + " length " + typeof(wordTiles[0].row));
 	//get the correct color variables and start filling new values
-	for (iTile in wordTiles) {
+	var count = 0; 
+	for (var iTile in wordTiles) {
+		console.log("count" + count);
+		count  = count +1;
 		var letterX = wordTiles[iTile].row;
 		var letterY = wordTiles[iTile].col;
-		console.log(letterY);
-		console.log(wordTiles[iTile].col  + "  "  + wordTiles[iTile].text+"  "+ "obj Itile");
-        console.log(matrix[letterX][letterY] + "  " + wordTiles[iTile].text);
+		console.log(letterY + " " + letterX);
+		//console.log(wordTiles[iTile].col  + "  "  + wordTiles[iTile].text+"  "+ "obj Itile");
+        //console.log(matrix[letterX][letterY] + "  " + wordTiles[iTile].text);
 		if ((matrix[letterX][letterY]==defaultColor)||(matrix[letterX][letterY]==oponent.lightColor)) {
 			matrix[letterX][letterY] = curPlayer.lightColor;
             console.log("update")
 		}
+	}
+
 	for (var j = 0; j < matrix.length; j++) {
 		for (var k = 0; k < matrix[0].length; k++) {
 			if(isSurrounded(matrix, j, k)){
@@ -51,7 +56,7 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
 	}
 	return matrix;
 }
-}
+
 
 function isSurrounded(arrayIn, xCoord,yCoord) {
 	var lenY = arrayIn.length;//rows
@@ -82,7 +87,6 @@ var matrix1 =[['gray','gray','gray','gray','gray'],
              ['gray','gray','gray','gray','gray'],
              ['gray','gray','gray','gray','gray'],
              ['gray','gray','gray','gray','gray']];
-console.log(matrix1 + "arry 1 ");
 
 //var letterCoords = [[0,1],[1,0],[0,0],[4,4],[2,3]];
 
@@ -107,8 +111,4 @@ word[4] = new Tile('g','blue',30,30,10,1,0);
 //console.log(word.length + "  " + typeof(tiles) + "  " +"  " + "  word array"); 
 //console.log(m1);
 
-
-m1 = updateColors(matrix1,word, Player2,Player1);
-
-console.log("m1" + m1);
 
