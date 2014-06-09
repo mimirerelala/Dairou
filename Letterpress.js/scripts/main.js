@@ -22,10 +22,12 @@ function main() {
     console.log(matrix1);
 
     m1 = updateColors(matrix1,word, Player2, Player1);
-    console.log("m1 " + m1+ " " + m1.length + " " + typeof(m1));
-
+    console.log("m1 " + " " + m1.length + " " + typeof(m1));
+    //console.log(m1);
     m2 = updateColors(m1,tiles, Player1, Player2);
-    console.log("m2 " + m2 + " " + m2[0].length + " " + typeof(m2));
+    console.log("m2 " +" " + m2[0].length + " " + typeof(m2));
+    //console.log(m2);
+
 }
 
 function prepareCanvas() {
@@ -78,15 +80,16 @@ function makeTiles(boardLetters) {
         tempX = boardX + col * (tileSize + tileMargin);
         tempY = boardY + row * (tileSize + tileMargin);
 
-        boardPos = {
-            row: row,
-            col: col
-        };
+        //boardPos = {
+        //    row: row,
+        //    col: col
+        //};
+        console.log("row + col  " + row + " " + col);
 
         var rand = Math.random();
         tempColor = rand < 0.33 ? red : rand < 0.66 ? blue : gray;
 
-        tiles.push(new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize, boardPos));
+        tiles.push(new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize, row, col));
     }
 
     return tiles;

@@ -29,11 +29,11 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
 	//get the correct color variables and start filling new values
 	var count = 0; 
 	for (var iTile in wordTiles) {
-		console.log("count" + count);
+		console.log("count " + count);
 		count  = count +1;
 		var letterX = wordTiles[iTile].row;
 		var letterY = wordTiles[iTile].col;
-		console.log(letterY + " " + letterX);
+		console.log("row " + "col"+ letterY + " " + letterX);
 		//console.log(wordTiles[iTile].col  + "  "  + wordTiles[iTile].text+"  "+ "obj Itile");
         //console.log(matrix[letterX][letterY] + "  " + wordTiles[iTile].text);
 		if ((matrix[letterX][letterY]==defaultColor)||(matrix[letterX][letterY]==oponent.lightColor)) {
@@ -46,14 +46,15 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
 		for (var k = 0; k < matrix[0].length; k++) {
 			if(isSurrounded(matrix, j, k)){
 			}
-			else if (matrix[j,k]==curPlayer.darkColor){
-				matrix[j,k] = curPlayer.lightColor;
+			else if (matrix[j][k]==curPlayer.darkColor){
+				matrix[j][k] = curPlayer.lightColor;
 			}
-			else if(matrix[j,k]==oponent.darkColor){
-				matrix[j,k] = oponent.lightColor;
+			else if(matrix[j][k]==oponent.darkColor){
+				matrix[j][k] = oponent.lightColor;
             }
 		}
 	}
+	console.log(matrix);
 	return matrix;
 }
 
