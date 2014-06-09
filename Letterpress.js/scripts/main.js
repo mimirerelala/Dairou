@@ -21,11 +21,12 @@ function main() {
     console.log(typeof(matrix1));
     console.log(matrix1);
 
+    console.log(matrix1);
     m1 = updateColors(matrix1,word, Player2, Player1);
     console.log("m1 " + " " + m1.length + " " + typeof(m1));
-    //console.log(m1);
-    m2 = updateColors(m1,tiles, Player1, Player2);
-    console.log("m2 " +" " + m2[0].length + " " + typeof(m2));
+    console.log(m1);
+    //m2 = updateColors(m1,tiles, Player1, Player2);
+    //console.log("m2 " +" " + m2[0].length + " " + typeof(m2));
     //console.log(m2);
 
 }
