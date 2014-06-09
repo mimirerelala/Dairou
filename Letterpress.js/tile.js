@@ -23,7 +23,7 @@ Tile.prototype.isClicked = function (clickX, clickY) {
 // Draws the tile (a colored square with a letter on top)
 Tile.prototype.draw = function (context) {
     context.fillStyle = this.color;
-    if (!this.isMoving) {
+    if (!this.isMoving || true) {
         context.fillRect(this.X, this.Y, this.size, this.size);
         context.fillStyle = this.fontColor;
         context.font = this.font;
