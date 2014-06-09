@@ -9,7 +9,6 @@ function mouseDownListener(evt) {
         window.addEventListener("mousemove", mouseMoveListener, false);
 
         dragTile = tiles[dragIndex];
-        dragTile.isMoving = true;
 
         // We now place the currently dragged tile on top by placing it last in the array.
         tiles.push(tiles.splice(dragIndex, 1)[0]);
@@ -76,26 +75,4 @@ function getMousePos(canvas, evt) {
         X: (evt.clientX - bRect.left) * (canvas.width / bRect.width),
         Y: (evt.clientY - bRect.top) * (canvas.height / bRect.height)
     };
-}
-
-
-
- // Runs while the timer is ticking
-function onTimerTick() {
-    // The next variable controls the lag in the tile movement (from 0 to 1)
-    var easeAmount = 0.2;
-    // Update the moving tile position
-    dragTile.X += easeAmount * (dragTile.targetPosX - dragTile.X);
-    dragTile.Y += easeAmount * (dragTile.targetPosY - dragTile.Y);
-
-    // Stop the timer when the target position is reached (close enough)
-    if ((!isDragging) && (Math.abs(dragTile.X - dragTile.targetPosX) < 0.1) && (Math.abs(dragTile.Y - dragTile.targetPosY) < 0.1)) {
-        // Snap the tile to its final position
-        dragTile.X = dragTile.targetPosX;
-        dragTile.Y = dragTile.targetPosY;
-        dragTile.isMoving = false;
-        // Stop timer:
-        clearInterval(timer);
-    }
-    drawScreen();
 }

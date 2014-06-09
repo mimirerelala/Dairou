@@ -1,3 +1,99 @@
+window.addEventListener("load", main, false);
+
+var canvas, context;
+var tiles;
+var isDragging;
+var timer;
+var dragTile;
+
+function main() {
+
+    prepareCanvas();
+    prepareBoard();
+    drawScreen();
+
+    canvas.addEventListener("mousedown", mouseDownListener, false);
+}
+
+function prepareCanvas() {
+    canvas = document.createElement("canvas");
+    canvas.width = 1024;
+    canvas.height = 768;
+    canvas.style.position = 'absolute';
+    canvas.style.left = (document.documentElement.clientWidth - canvas.width) / 2 + 'px';
+
+    document.body.appendChild(canvas);
+    context = canvas.getContext("2d");
+}
+
+function prepareBoard() {
+    var numTiles = 25;
+    var boardLetters = "GMYONIWNXGETSMZWZZLENTEGI";
+    tiles = makeTiles(numTiles, boardLetters);
+}
+
+ // Renders the canvas to screen
+function drawScreen() {
+    context.fillStyle = 'rgb(240, 239, 236)';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    for (var i = 0; i < tiles.length; i++)
+        tiles[i].draw(context);
+
+}
+
+
+function makeTiles(numTiles, boardLetters) {
+    var i;
+    var tempX, tempY, tempColor;
+    var boardX, boardY;
+    var red = "rgb(247,153,141)";
+    var blue = "rgb(120,200,245)";
+    var gray = "rgb(230, 230, 230)";
+    var darkRed = "rgb(255, 67, 47)";
+    var darkBlue = "rgb(0, 162, 255)";
+
+    var tileSize = 114; // pixels
+    var tileMargin = 1; // pixels
+
+    boardX = (canvas.width - 5 * (tileSize + tileMargin)) / 2;
+    boardY = (canvas.height - 5 * (tileSize + tileMargin)) - tileSize / 10;
+
+    tiles = new Array();
+    for (i = 0; i < numTiles; i++) {
+        tempX = boardX + (i % 5) * (tileSize + tileMargin);
+        tempY = boardY + (~~(i / 5) * (tileSize + tileMargin));
+
+        var rand = Math.random();
+        tempColor = rand < 0.33 ? red : rand < 0.66 ? blue : gray;
+        posCoords=[i%5,~~(i / 5)];//save matrix coordinas
+        //tiles.push(new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize, posCoords));
+        tiles[i] = new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize, posCoords);
+
+    }
+
+    return tiles;
+}
+
+ // Translates the mouse position to canvas coodrinates
+function getMousePos(canvas, evt) {
+    var bRect = canvas.getBoundingClientRect();
+    return {
+        X: (evt.clientX - bRect.left) * (canvas.width / bRect.width),
+        Y: (evt.clientY - bRect.top) * (canvas.height / bRect.height)
+    };
+}
+
+ // Returns the index of the tile being clicked or -1 if no tile was clicked
+function getDragIndex(mouseX, mouseY) {
+    var dragIndex = -1;
+    // the variable will be overwritten to ensure only the topmost tile is dragged
+    for (var i = 0; i < tiles.length; i++)
+        if (tiles[i].isClicked(mouseX, mouseY))
+            dragIndex = i;
+    return dragIndex;
+}
+
 function mouseDownListener(evt) {
     var mousePos = getMousePos(canvas, evt);
 
@@ -9,7 +105,6 @@ function mouseDownListener(evt) {
         window.addEventListener("mousemove", mouseMoveListener, false);
 
         dragTile = tiles[dragIndex];
-        dragTile.isMoving = true;
 
         // We now place the currently dragged tile on top by placing it last in the array.
         tiles.push(tiles.splice(dragIndex, 1)[0]);
@@ -59,27 +154,6 @@ function mouseMoveListener(evt) {
     dragTile.targetPosY = Math.min(Math.max(mousePos.Y - dragTile.clickOffsetY, minY), maxY);
 }
 
- // Returns the index of the tile being clicked or -1 if no tile was clicked
-function getDragIndex(mouseX, mouseY) {
-    var dragIndex = -1;
-    // the variable will be overwritten to ensure only the topmost tile is dragged
-    for (var i = 0; i < tiles.length; i++)
-        if (tiles[i].isClicked(mouseX, mouseY))
-            dragIndex = i;
-    return dragIndex;
-}
-
- // Translates the mouse position to canvas coodrinates
-function getMousePos(canvas, evt) {
-    var bRect = canvas.getBoundingClientRect();
-    return {
-        X: (evt.clientX - bRect.left) * (canvas.width / bRect.width),
-        Y: (evt.clientY - bRect.top) * (canvas.height / bRect.height)
-    };
-}
-
-
-
  // Runs while the timer is ticking
 function onTimerTick() {
     // The next variable controls the lag in the tile movement (from 0 to 1)
@@ -93,7 +167,6 @@ function onTimerTick() {
         // Snap the tile to its final position
         dragTile.X = dragTile.targetPosX;
         dragTile.Y = dragTile.targetPosY;
-        dragTile.isMoving = false;
         // Stop timer:
         clearInterval(timer);
     }
