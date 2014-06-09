@@ -32,7 +32,7 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
 		var letterY = wordTiles[iTile].col;
 		console.log(letterY);
 		console.log(wordTiles[iTile].col  + "  "  + wordTiles[iTile].text+"  "+ "obj Itile");
-        console.log(matrix[letterX][letterY] + "  " + iTile.text);
+        console.log(matrix[letterX][letterY] + "  " + wordTiles[iTile].text);
 		if ((matrix[letterX][letterY]==defaultColor)||(matrix[letterX][letterY]==oponent.lightColor)) {
 			matrix[letterX][letterY] = curPlayer.lightColor;
             console.log("update")
