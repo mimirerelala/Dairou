@@ -14,7 +14,7 @@ function Button(text, color, posX, posY, size) {
 
 // Checks if the coordinates supplied are inside the button
 Button.prototype.isClicked = function (clickX, clickY) {
-    return ((clickX > this.X) && (clickX < this.X + this.size) && (clickY > this.Y) && (clickY < this.Y + this.size));
+    return ((clickX > this.X) && (clickX < this.X + this.size*3) && (clickY > this.Y) && (clickY < this.Y + this.size));
 };
 
 // Draws the button (a colored square with a letter on top)

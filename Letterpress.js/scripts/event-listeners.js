@@ -8,6 +8,12 @@ function mouseDownListener(evt) {
         tiles[dragIndex].onMouseDown(mousePos, dragIndex);
     } else {
         // check if one of the buttons is clicked (submit, clear etc.)
+		 var word = wordHolder.word().toLowerCase();
+        if (submitButton.isClicked(mousePos.X, mousePos.Y) && !checkIfWordRepeats(word) && isWordCorrect(word)) {
+            alert ('true');
+        } else{
+            alert('false');
+        }
     }
     canvas.removeEventListener("mousedown", mouseDownListener, false);
     window.addEventListener("mouseup", mouseUpListener, false);
