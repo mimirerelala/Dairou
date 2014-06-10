@@ -33,7 +33,6 @@ function mouseDownListener(evt) {
     // Prevents the mouse down from having an effect on the main browser window:
     evt.preventDefault();
 }
-
 function mouseUpListener(evt) {
     canvas.addEventListener("mousedown", mouseDownListener, false);
     window.removeEventListener("mouseup", mouseUpListener, false);
@@ -46,11 +45,13 @@ function mouseUpListener(evt) {
             dragTile.targetPosY = dragTile.initalY;
         } else {
             // Make the tile go up
-            dragTile.targetPosX = 0;
-            dragTile.targetPosY = 0;
+            var startPosition = (canvas.width - 7*dragTile.size) / 2;
+            wordHolder.addTile(dragTile);
+            dragTile.targetPosX = startPosition+dragTile.size * (wordHolder.wordLetters.length);
+            dragTile.targetPosY = 50;
             addToWord(dragTile.text);
 
-            wordHolder.addTile(dragTile);
+          
         }
         window.removeEventListener("mousemove", mouseMoveListener, false);
     }
