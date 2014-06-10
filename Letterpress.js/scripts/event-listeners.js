@@ -8,17 +8,17 @@ function mouseDownListener(evt) {
         tiles[dragIndex].onMouseDown(mousePos, dragIndex);
     } else {
         // check if one of the buttons is clicked (submit, clear etc.)
-		 var word = wordHolder.word().toLowerCase();
-       if (submitButton.isClicked(mousePos.X, mousePos.Y)) {
+        var word = wordHolder.word().toLowerCase();
+        if (submitButton.isClicked(mousePos.X, mousePos.Y)) {
             if (!checkIfWordRepeats(word) && isWordCorrect(word)) {
                 alert('true');
                 addToSubmittedWords(word);
-				// return tiles to their places with new color
+                // return tiles to their places with new color
                 // wordHolder.clear();
             } else {
                 alert('false');
-            } 
-        }else {
+            }
+        } else {
             if (clearButton.isClicked(mousePos.X, mousePos.Y)) {
                 alert('clear clicked');
             }
@@ -153,16 +153,33 @@ Tile.prototype.move = function () {
             this.wasDragged = false;
         }
 
-        if (this.isUsedInWord && isDragging && dragTile === this) {
-            wordHolder.updateWord(this);
+        if (isDragging && dragTile === this) {
+            if (this.isUsedInWord) {
+                wordHolder.updateWord(this);
+            } else {
+                if (this.Y + this.size / 2 < boardY) {
+                    // >>>>>>>>>>>>>>>>> insert tile when dragging
+                    wordHolder.addTile(this);
+                }
+            }
         }
     }
-
-    // >>>>>>>>>>>>>>>>> this is the new tile position -> check if is used and update word holder
 }
 
 Tile.prototype.onMouseUp = function () {
     if (this.wasDragged) {
+
+        if (dragTile === this) {
+            if (this.isUsedInWord) {
+                wordHolder.updateWord(this);
+            } else {
+                if (this.Y + this.size / 2 < boardY) {
+                    // >>>>>>>>>>>>>>>>> insert tile when dragging
+                    wordHolder.addTile(this);
+                }
+            }
+        }
+
 
         if (!this.isUsedInWord && ((this.Y - this.targetPosY > 5) || this.Y + this.size / 2 < boardY)) {
             // tile is not used in word and is either moving up or released up

@@ -21,7 +21,17 @@
 
  // Adds a tile
  WordHolder.prototype.addTile = function (tile) {
-     this.wordLetters.push(tile);
+
+     if ((tile.Y - tile.targetPosY > 5) || (tile.Y + tileSize / 2 < boardY) || this.wordLetters.length == 1) {
+         // moving up or released up
+         this.wordLetters.push(tile);
+     } else {
+         var leftPadding = (canvas.width - this.wordLetters.length * tileSize) / 2;
+         var tileX = Math.max(tile.X + (tileSize / 2) - leftPadding, 0);
+         var newIndex = Math.min(~~(tileX / tileSize), this.wordLetters.length - 1);
+         this.wordLetters.splice(newIndex, 0, tile);
+     }
+
      this.updateTilePositions(-1);
      tile.isUsedInWord = true;
 
