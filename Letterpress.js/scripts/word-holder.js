@@ -9,9 +9,10 @@
 WordHolder.prototype.word = function() {
      var word = this.wordLetters[0].text;
      for (var i = 1; i < this.wordLetters.length; i++) {
-         word = word + this.wordwordLetters[i].text;
+         word = word + this.wordLetters[i].text;
      };
      return word;
+     
  };
  // Clears the letters
  WordHolder.prototype.clear = function () {
