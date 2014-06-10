@@ -6,7 +6,7 @@ function mouseDownListener(evt) {
 
     if (dragIndex > -1) {
         tiles[dragIndex].onMouseDown(mousePos, dragIndex);
-    } else {
+    } else if (wordHolder.wordLetters.length > 0) {
         // check if one of the buttons is clicked (submit, clear etc.)
         var word = wordHolder.word().toLowerCase();
         if (submitButton.isClicked(mousePos.X, mousePos.Y)) {
