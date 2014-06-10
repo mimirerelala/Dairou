@@ -117,4 +117,3 @@ function getRandomColor() {
     //var alfa = getRandomValue(0,1);
     return "rgb(" + red + "," + green + "," + blue + ")";
 };
-
