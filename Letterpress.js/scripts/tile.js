@@ -25,7 +25,7 @@ Tile.prototype.isClicked = function (clickX, clickY) {
 // Draws the tile (a colored square with a letter on top)
 Tile.prototype.draw = function (context) {
     context.fillStyle = this.color;
-    if (!this.isMoving || true) {
+    if (!this.isMoving) {
         context.fillRect(this.X, this.Y, this.size, this.size);
         context.fillStyle = this.fontColor;
         context.font = this.font;
@@ -37,8 +37,6 @@ Tile.prototype.draw = function (context) {
         );
 
     } else {
-        //  context.fillStyle = 'red';
-
         context.save();
         context.beginPath();
         context.moveTo(this.X, this.Y); //1
@@ -47,26 +45,27 @@ Tile.prototype.draw = function (context) {
         context.quadraticCurveTo((this.X + this.size * 0.8), this.Y + this.size * 0.8, this.X + this.size * 0.25, this.Y + this.size * 1.1); //4
         context.quadraticCurveTo(this.X + this.size * 0.1, this.Y + this.size * 0.9, this.X, this.Y); //5
         context.shadowColor = '#999';
-        context.shadowBlur = 20;
+         context.shadowBlur = 20;
         context.shadowOffsetX = 15;
         context.shadowOffsetY = 15;
         context.fill();
-        context.fillStyle = this.fontColor;
-        context.font = this.font;
-
+       
+        context.restore();
         context.save();
 
-        this.X = findXText(this.X, this.Y, -10);
-        this.Y = findYText(this.X, this.Y, -10);
-
-        context.translate(this.size * 0.5, this.size * 0.5);
+        context.fillStyle = this.fontColor;
+        context.font = this.font;
+        context.translate(this.X + this.size * 0.5, this.Y + this.size * 0.5);
         context.rotate(-10 * Math.PI / 180);
+        context.translate(-(this.X + this.size * 0.5), -(this.Y + this.size * 0.5));
+
         context.fillText(
             this.text,
-            this.X - (context.measureText(this.text).width / 2),
-            this.Y + this.fontSize / 4
+         
+                this.X + (this.size / 2) - (context.measureText(this.text).width / 2),
+                this.Y + (this.size / 2) + this.fontSize / 4
         );
-        context.restore();
+        
         context.restore();
     }
 
