@@ -8,6 +8,7 @@
  // Returns the letters as string
  WordHolder.prototype.word = function() {
  	// TODO: by strasho
+ 	return '';
  };
 
  // Clears the letters
