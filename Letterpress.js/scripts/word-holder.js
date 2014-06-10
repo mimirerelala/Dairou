@@ -6,11 +6,13 @@
  }
 
  // Returns the letters as string
- WordHolder.prototype.word = function() {
- 	// TODO: by strasho
- 	return '';
+WordHolder.prototype.word = function() {
+     var word = this.wordLetters[0].text;
+     for (var i = 1; i < this.wordLetters.length; i++) {
+         word = word + this.wordwordLetters[i].text;
+     };
+     return word;
  };
-
  // Clears the letters
  WordHolder.prototype.clear = function () {
      this.wordLetters = [];
