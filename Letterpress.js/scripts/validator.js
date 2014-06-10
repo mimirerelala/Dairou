@@ -13,5 +13,10 @@ function checkIfWordRepeats(word) {
     return false;
 }
 
+function addToSubmittedWords(word) {
+    submittedWords.push(word);
+}
+
+
 
 

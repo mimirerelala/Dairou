@@ -6,6 +6,7 @@ var isDragging;
 var timer;
 var dragTile;
 var submitButton;
+var clearButton;
 var wordToSubmit = '';
 var words = [];
 var wordHolder; // holds the letters
@@ -35,7 +36,8 @@ function prepareBoard() {
     var boardLetters = generateRandomLeters();
     tiles = makeTiles(boardLetters);
     wordHolder = new WordHolder(0, canvas.height / 20);	
-    submitButton = new Button('Submit', 'rgb(70,130,180)', 620, 40, 40);
+    submitButton = new Button('Submit', 'rgb(70,130,180)', 655, 138, 40);
+	clearButton = new Button('Clear', 'rgb(70,200,180)', 655, 180, 40);
 }
 
 // Renders the canvas to screen
@@ -43,6 +45,7 @@ function drawScreen() {
     context.fillStyle = 'rgb(240, 239, 236)';
     context.fillRect(0, 0, canvas.width, canvas.height);    
     submitButton.draw(context);
+	clearButton.draw(context);
 	
     for (var i = 0; i < tiles.length; i++)
         tiles[i].draw(context);

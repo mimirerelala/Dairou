@@ -9,10 +9,19 @@ function mouseDownListener(evt) {
     } else {
         // check if one of the buttons is clicked (submit, clear etc.)
 		 var word = wordHolder.word().toLowerCase();
-        if (submitButton.isClicked(mousePos.X, mousePos.Y) && !checkIfWordRepeats(word) && isWordCorrect(word)) {
-            alert ('true');
-        } else{
-            alert('false');
+       if (submitButton.isClicked(mousePos.X, mousePos.Y)) {
+            if (!checkIfWordRepeats(word) && isWordCorrect(word)) {
+                alert('true');
+                addToSubmittedWords(word);
+				// return tiles to their places with new color
+                // wordHolder.clear();
+            } else {
+                alert('false');
+            } 
+        }else {
+            if (clearButton.isClicked(mousePos.X, mousePos.Y)) {
+                alert('clear clicked');
+            }
         }
     }
     canvas.removeEventListener("mousedown", mouseDownListener, false);
