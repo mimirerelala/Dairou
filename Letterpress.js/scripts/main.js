@@ -5,33 +5,19 @@ var tiles;
 var isDragging;
 var timer;
 var dragTile;
-var wasDragged;
+
 var wordToSubmit = '';
 var words = [];
 var wordHolder; // holds the letters
+var boardX, boardY;
 
 function main() {
 
     prepareCanvas();
     prepareBoard();
     drawScreen();
+
     canvas.addEventListener("mousedown", mouseDownListener, false);
-
-    console.log(typeof(tiles) + "  type of tiles");
-    console.log(typeof(matrix1));
-    console.log(matrix1);
-
-    console.log(matrix1);
-    m1 = updateColors(matrix1,word, Player2, Player1);
-    console.log("m1 " + " " + m1.length + " " + typeof(m1));
-    console.log(m1);
-    //m2 = updateColors(m1,tiles, Player1, Player2);
-    //console.log("m2 " +" " + m2[0].length + " " + typeof(m2));
-    //console.log(m2);
-    //m3 = updateColors(m2, word, Player2, Player1);
-    //console.log("m1 " + " " + m1.length + " " + typeof(m1));
-    //console.log(m1);
-
 }
 
 function prepareCanvas() {
@@ -48,7 +34,7 @@ function prepareCanvas() {
 function prepareBoard() {
     var boardLetters = generateRandomLeters();
     tiles = makeTiles(boardLetters);
-    wordHolder = new WordHolder(0, 0);
+    wordHolder = new WordHolder(0, canvas.height / 20);
 }
 
 // Renders the canvas to screen
@@ -64,18 +50,17 @@ function drawScreen() {
 function makeTiles(boardLetters) {
     var i;
     var tempX, tempY, tempColor;
-    var boardX, boardY;
     var red = "rgb(247,153,141)";
     var blue = "rgb(120,200,245)";
-    var gray = "rgb(230, 230, 230)";
+    var gray = "rgb(225, 225, 225)";
     var darkRed = "rgb(255, 67, 47)";
     var darkBlue = "rgb(0, 162, 255)";
+    var lightGray = "rgb(230, 230, 230)";
+    var tileSize = ~~(canvas.height * 0.15); // pixels
+    var tileMargin = 0; // pixels
 
-    var tileSize = 85; // pixels
-    var tileMargin = 1; // pixels
-
-    boardX = (canvas.width - 5 * (tileSize + tileMargin)) / 2;
-    boardY = (canvas.height - 5 * (tileSize + tileMargin)) - tileSize / 4;
+    boardX = ~~((canvas.width - 5 * (tileSize + tileMargin)) / 2);
+    boardY = ~~((canvas.height - 5 * (tileSize + tileMargin)) - canvas.height / 50);
 
     tiles = [];
     for (i = 0; i < boardLetters.length; i++) {
@@ -84,16 +69,15 @@ function makeTiles(boardLetters) {
         tempX = boardX + col * (tileSize + tileMargin);
         tempY = boardY + row * (tileSize + tileMargin);
 
-        //boardPos = {
-        //    row: row,
-        //    col: col
-        //};
-        console.log("row + col  " + row + " " + col);
+        boardPos = {
+            row: row,
+            col: col
+        };
 
         var rand = Math.random();
-        tempColor = rand < 0.33 ? red : rand < 0.66 ? blue : gray;
-
-        tiles.push(new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize, row, col));
+        //tempColor = rand < 0.33 ? red : rand < 0.66 ? blue : gray;
+        tempColor = i % 2 ? gray : lightGray;
+        tiles.push(new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize, boardPos));
     }
 
     return tiles;
