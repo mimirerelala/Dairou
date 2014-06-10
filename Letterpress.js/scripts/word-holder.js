@@ -7,11 +7,11 @@
 
  // Returns the letters as string
  WordHolder.prototype.word = function () {
-     return this.wordLetters.map(function (tile) {
-         return tile.text;
-     }).reduce(function (str1, str2) {
-         return str1 + str2;
-     });
+     // The method should return the word that is currently on the screen as string.
+     // The letters are presented as objects of type Tile, 
+     // and the actual letter ('A', B', etc...) is contained in the property Tile.text
+     // All tiles that form the word, are stored in the array this.wordLetters
+     // ... So the method should go over the tiles in the array and concatenate the letters into a string :)
  };
 
  // Clears the letters
