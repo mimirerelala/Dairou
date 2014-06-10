@@ -10,6 +10,16 @@ var wordToSubmit = '';
 var words = [];
 var wordHolder; // holds the letters
 var boardX, boardY;
+var tileSize;
+
+var colors = {
+    red: "rgb(247,153,141)",
+    blue: "rgb(120,200,245)",
+    gray: "rgb(225, 225, 225)",
+    darkRed: "rgb(255, 67, 47)",
+    darkBlue: "rgb(0, 162, 255)",
+    lightGray: "rgb(230, 230, 230)",
+};
 
 function main() {
 
@@ -56,11 +66,12 @@ function makeTiles(boardLetters) {
     var darkRed = "rgb(255, 67, 47)";
     var darkBlue = "rgb(0, 162, 255)";
     var lightGray = "rgb(230, 230, 230)";
-    var tileSize = ~~(canvas.height * 0.15); // pixels
-    var tileMargin = 0; // pixels
 
-    boardX = ~~((canvas.width - 5 * (tileSize + tileMargin)) / 2);
-    boardY = ~~((canvas.height - 5 * (tileSize + tileMargin)) - canvas.height / 50);
+    var tileMargin = 0; // pixels
+    tileSize = ~~ (canvas.height * 0.15); // pixels
+
+    boardX = ~~ ((canvas.width - 5 * (tileSize + tileMargin)) / 2);
+    boardY = ~~ ((canvas.height - 5 * (tileSize + tileMargin)) - canvas.height / 50);
 
     tiles = [];
     for (i = 0; i < boardLetters.length; i++) {

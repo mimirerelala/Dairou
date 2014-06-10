@@ -138,7 +138,7 @@ Tile.prototype.move = function () {
             this.wasDragged = false;
         }
 
-        if (this.isUsedInWord && this.wasDragged) {
+        if (this.isUsedInWord && isDragging && dragTile === this) {
             wordHolder.updateWord(this);
         }
     }
