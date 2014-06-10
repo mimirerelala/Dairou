@@ -27,6 +27,7 @@ function main() {
     prepareCanvas();
     prepareBoard();
     drawScreen();
+    prepareSvg(document.documentElement.clientWidth / 2, canvas.width, canvas.height);
 
     canvas.addEventListener("mousedown", mouseDownListener, false);
 }
