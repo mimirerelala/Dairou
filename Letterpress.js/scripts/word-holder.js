@@ -7,7 +7,11 @@
 
  // Returns the letters as string
  WordHolder.prototype.word = function () {
-     return this.wordLetters.join('');
+     return this.wordLetters.map(function (tile) {
+         return tile.text;
+     }).reduce(function (str1, str2) {
+         return str1 + str2;
+     });
  };
 
  // Clears the letters
@@ -20,6 +24,8 @@
      this.wordLetters.push(tile);
      this.updateTilePositions(tile);
      tile.isUsedInWord = true;
+
+     //console.log(this.word());
  };
 
  // Removes a tile
@@ -33,6 +39,8 @@
          tile.targetPosX = tile.boardX;
          tile.targetPosY = tile.boardY;
      }
+
+     //console.log(this.word());
  };
 
  // Update tile positions
@@ -47,4 +55,16 @@
      // Start timer
      if (!timer)
          timer = setInterval(onTimerTick, 1000 / 60);
+ };
+
+ // Update tile positions
+ WordHolder.prototype.updateWord = function (draggedTile) {
+     //     var leftPadding = (canvas.width - this.wordLetters.length * tile.size) / 2;
+     //     var tileX = Math.max(draggedTile.X - leftPadding, 0);
+     //     var tileIndex = ~~ (tileX / draggedTile.size);
+     //
+     //     if (tileIndex === this.wordLetters.indexOf(draggedTile)) {
+     //         return;
+     //     }
+
  };

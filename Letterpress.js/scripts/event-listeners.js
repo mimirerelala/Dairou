@@ -70,7 +70,7 @@ function onTimerTick() {
 
     drawScreen();
 
-    console.log(timer);
+    //console.log(timer);
 }
 
 Tile.prototype.onMouseDown = function (mousePos, dragIndex) {
@@ -136,6 +136,10 @@ Tile.prototype.move = function () {
 
             this.isMoving = false;
             this.wasDragged = false;
+        }
+
+        if (this.isUsedInWord && this.wasDragged) {
+            wordHolder.updateWord(this);
         }
     }
 
