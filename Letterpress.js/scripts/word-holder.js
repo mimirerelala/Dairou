@@ -6,12 +6,8 @@
  }
 
  // Returns the letters as string
- WordHolder.prototype.word = function () {
-     // The method should return the word that is currently on the screen as string.
-     // The letters are presented as objects of type Tile, 
-     // and the actual letter ('A', B', etc...) is contained in the property Tile.text
-     // All tiles that form the word, are stored in the array this.wordLetters
-     // ... So the method should go over the tiles in the array and concatenate the letters into a string :)
+ WordHolder.prototype.word = function() {
+ 	// TODO: by strasho
  };
 
  // Clears the letters
@@ -89,11 +85,8 @@
      }
 
      // rearrange tiles
-     var oldWord = this.word();
      this.wordLetters.move(oldIndex, newIndex);
-     //console.log(oldWord + " -> " + this.word());
      this.updateTilePositions(newIndex);
-
  };
 
  Array.prototype.move = function (old_index, new_index) {

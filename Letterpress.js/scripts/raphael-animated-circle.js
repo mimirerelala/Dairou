@@ -87,7 +87,7 @@
             createCircle(angle);
             angle++;
 
-            setTimeout(frame, refreshInterval);
+            //setTimeout(frame, refreshInterval);
             //window.requestAnimationFrame(frame);
 
             if (angle === 360) {
