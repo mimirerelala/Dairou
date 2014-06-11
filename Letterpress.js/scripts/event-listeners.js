@@ -155,11 +155,10 @@ Tile.prototype.move = function () {
 
         if (isDragging && dragTile === this) {
             if (this.isUsedInWord) {
-                wordHolder.updateWord(this);
+                wordHolder.rearrangeWord(this);
             } else {
                 if (this.Y + this.size / 2 < boardY) {
-                    // >>>>>>>>>>>>>>>>> insert tile when dragging
-                    wordHolder.addTile(this);
+                    wordHolder.insertTile(this);
                 }
             }
         }
@@ -169,20 +168,8 @@ Tile.prototype.move = function () {
 Tile.prototype.onMouseUp = function () {
     if (this.wasDragged) {
 
-        if (dragTile === this) {
-            if (this.isUsedInWord) {
-                wordHolder.updateWord(this);
-            } else {
-                if (this.Y + this.size / 2 < boardY) {
-                    // >>>>>>>>>>>>>>>>> insert tile when dragging
-                    wordHolder.addTile(this);
-                }
-            }
-        }
-
-
-        if (!this.isUsedInWord && ((this.Y - this.targetPosY > 5) || this.Y + this.size / 2 < boardY)) {
-            // tile is not used in word and is either moving up or released up
+        if (!this.isUsedInWord && (this.Y - this.targetPosY > 5)) {
+            // tile is not used in word and is moving up
             wordHolder.addTile(this);
 
         } else if (this.isUsedInWord && (this.Y + this.size / 2 >= boardY)) {

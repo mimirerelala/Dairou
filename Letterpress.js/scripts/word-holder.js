@@ -6,13 +6,13 @@
  }
 
  // Returns the letters as string
-WordHolder.prototype.word = function() {
+ WordHolder.prototype.word = function () {
      var word = this.wordLetters[0].text;
      for (var i = 1; i < this.wordLetters.length; i++) {
          word = word + this.wordLetters[i].text;
      };
      return word;
-     
+
  };
  // Clears the letters
  WordHolder.prototype.clear = function () {
@@ -21,21 +21,26 @@ WordHolder.prototype.word = function() {
 
  // Adds a tile
  WordHolder.prototype.addTile = function (tile) {
-
-     if ((tile.Y - tile.targetPosY > 5) || (tile.Y + tileSize / 2 < boardY) || this.wordLetters.length == 1) {
-         // moving up or released up
-         this.wordLetters.push(tile);
-     } else {
-         var leftPadding = (canvas.width - this.wordLetters.length * tileSize) / 2;
-         var tileX = Math.max(tile.X + (tileSize / 2) - leftPadding, 0);
-         var newIndex = Math.min(~~(tileX / tileSize), this.wordLetters.length - 1);
-         this.wordLetters.splice(newIndex, 0, tile);
-     }
-
+     this.wordLetters.push(tile);	 
      this.updateTilePositions(-1);
      tile.isUsedInWord = true;
+ };
 
-     //console.log(this.word());
+  // Inserts a tile
+ WordHolder.prototype.insertTile = function (tile) {
+
+     if (this.wordLetters.length == 0) {
+         this.addTile(tile);
+         return;
+     }
+
+     var leftPadding = (canvas.width - this.wordLetters.length * tileSize) / 2;
+     var tileX = Math.max(tile.X + (tileSize / 2) - leftPadding, 0);
+     var newIndex = Math.min(~~(tileX / tileSize), this.wordLetters.length - 1);
+     this.wordLetters.splice(newIndex, 0, tile);
+   
+     this.updateTilePositions(-1);
+     tile.isUsedInWord = true;
  };
 
  // Removes a tile
@@ -75,7 +80,7 @@ WordHolder.prototype.word = function() {
  };
 
  // Update tile positions
- WordHolder.prototype.updateWord = function (draggedTile) {
+ WordHolder.prototype.rearrangeWord = function (draggedTile) {
      if (this.wordLetters.length == 1)
          return;
 
