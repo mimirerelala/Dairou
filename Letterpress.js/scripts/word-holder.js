@@ -52,7 +52,7 @@
      var newIndex = Math.min(~~(tileX / tileSize), this.wordLetters.length - 1);
      this.wordLetters.splice(newIndex, 0, tile);
 
-     this.updateTilePositions(-1);
+     this.updateTilePositions(newIndex);
      tile.isUsedInWord = true;
  };
 
