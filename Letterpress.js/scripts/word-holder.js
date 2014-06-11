@@ -47,9 +47,10 @@
          return;
      }
 
-     var leftPadding = (canvas.width - this.wordLetters.length * tileSize) / 2;
+     var newLength = this.wordLetters.length + 1;
+     var leftPadding = (canvas.width - newLength * tileSize) / 2;
      var tileX = Math.max(tile.X + (tileSize / 2) - leftPadding, 0);
-     var newIndex = Math.min(~~(tileX / tileSize), this.wordLetters.length - 1);
+     var newIndex = Math.min(~~(tileX / tileSize), newLength - 1);
      this.wordLetters.splice(newIndex, 0, tile);
 
      this.updateTilePositions(newIndex);
