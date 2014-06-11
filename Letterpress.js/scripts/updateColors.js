@@ -21,9 +21,9 @@ function updateScores() {
         if (tile.color === colors.red || tile.color === colors.darkRed)
             redScore++;
     }
+
+    console.log(blueScore + " : " + redScore);
 }
-
-
 
 //colors are 'r', 'rr','b','bb', 'gray'
 var matrix1 = [['gray', 'gray', 'gray', 'gray', 'gray'],
@@ -49,7 +49,7 @@ word[0] = new Tile('g', 'gray', 30, 30, 10, [4, 1]);
 word[1] = new Tile('g', 'red', 30, 30, 10, [3, 1]);
 word[2] = new Tile('g', 'blue', 30, 30, 10, [0, 0]);
 word[3] = new Tile('g', 'blue', 30, 30, 10, [0, 1]);
-word[4] = new Tile('g', 'blue', 30, 30, 10, [1, 0]); 
+word[4] = new Tile('g', 'blue', 30, 30, 10, [1, 0]);
 
 // Returns an array of Tile objects
 
