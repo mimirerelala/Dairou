@@ -34,7 +34,7 @@ function main() {
 
 
 
-    initializePlayers();
+    gamePlayers = initializePlayers();
     matrixColors = initializeColorMatrix();
 
     canvas.addEventListener("mousedown", mouseDownListener, false);
@@ -61,26 +61,19 @@ function prepareBoard() {
     wordHolder = new WordHolder(0, canvas.height / 20);
     //submitButton = new Button('Submit', 'rgb(70,130,180)', 655, 138, 40);
     //clearButton = new Button('Clear', 'rgb(70,200,180)', 655, 180, 40);
-    submitButton = new Button('Submit', 30, 'red', 'rgb(240, 239, 236)', 645, 0, 40);
-    clearButton = new Button('Clear', 30, 'darkblue', 'rgb(240, 239, 236)', 20, 0, 40);
+    submitButton = new Button('Submit', 30, 'red', 'rgb(240, 239, 236)', 645, -3, 40);
+    clearButton = new Button('Clear', 30, 'darkblue', 'rgb(240, 239, 236)', 20, -3, 40);
 }
 
 // Renders the canvas to screen
 function drawScreen() {
-    var redScoreAsString = redScore.toString();
-    var blueScoreAsString = blueScore.toString();
-
+  
     context.fillStyle = 'rgb(240, 239, 236)';
     context.fillRect(0, 0, canvas.width, canvas.height);
 
     context.save();
-    context.textAlign = 'center';
-    context.font = 'bold 68px Calibri';
-    context.fillStyle = 'red';
-    context.fillText(redScoreAsString, 80, 380); //canvas.width * 0.4, canvas.heigh * 0.1);
-
-    context.fillStyle = 'darkblue';
-    context.fillText(blueScoreAsString, 710, 380); //canvas.width * 0.6, canvas.heigh * 0.1);
+    
+    drawScores();
 
     context.restore();
 
@@ -91,6 +84,19 @@ function drawScreen() {
         tiles[i].draw(context);
 
 
+}
+
+function drawScores() {
+    var redScoreAsString = redScore.toString();
+    var blueScoreAsString = blueScore.toString();
+
+    context.textAlign = 'center';
+    context.font = 'bold 68px Calibri';
+    context.fillStyle = 'red';
+    context.fillText(redScoreAsString, 80, 380); //canvas.width * 0.4, canvas.heigh * 0.1);
+
+    context.fillStyle = 'darkblue';
+    context.fillText(blueScoreAsString, 710, 380); //canvas.width * 0.6, canvas.heigh * 0.1);
 }
 
 // Returns an array of Tile objects
@@ -148,13 +154,14 @@ function initializePlayers() {
     var gamePlayers = [];
     gamePlayers[0] = Player1;
     gamePlayers[1] = Player2;
+    return gamePlayers;
 }
 
-function switchPlayers(playersIN) {
+function switchPlayers(playersIn) {
     playersIn[2] = playersIn[0];
     playersIn[0] = playersIn[1];
     playersIn[1] = playersIn[2];
-    return playersIN;
+    return playersIn;
 }
 
 

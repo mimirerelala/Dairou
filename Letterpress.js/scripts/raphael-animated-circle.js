@@ -43,8 +43,10 @@
             shadow.attr({
                 stroke: "none",
                 fill: "#333"
-            }).scale(1.2, 1.2, [30], [20]).blur(2);
+            });
             shadow.transform(translate + scale);
+            shadow.scale(1.2, 1.2, [30], [20]);
+            shadow.blur(2);
 
             //colorStick// = getRandomColor();
 
@@ -62,17 +64,17 @@
             stick.attr({
                 stroke: 'none',
                 fill: colorStick
-            }).scale(1.2, 1.2, [30], [20]);
-
+            });
             stick.transform(translate + scale);
 
-            text = paper.text(48, 35, letterPressWord[i]);
+            text = paper.text(38, 50, letterPressWord[i]);
             text.attr({
                 fill: '#000',
                 'font-size': '28px',
                 'font-family': 'Arial'
-            }).rotate(-20, 0, 0);
+            });
             text.transform(translate + scale);
+            text.rotate(-20, 0, 0);
         }
     }
 

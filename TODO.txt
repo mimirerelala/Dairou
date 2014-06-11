@@ -1,4 +1,5 @@
-2. recoloring - mirela
-5. player counter (refactoring) villy
+1. recoloring - mirela - done (need to fix coloring central not used square)
+2. player counter (refactoring) -  villy
+3. game needs to finish!
 
 ivo: всичко е готово

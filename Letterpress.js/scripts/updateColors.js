@@ -56,22 +56,11 @@ word[4] = new Tile('g', 'blue', 30, 30, 10, [1, 0]);
 
 
 function updateColors(matrix, wordTiles, curPlayer, oponent) {
-    //use a mask array to recalculate card colors
-    //players can have one letter colors
-    //when surrounding a card with their colors, 
-    //use wordTiles array of Tiles objects , both players and a 
-    //color matrix as an input
-    //console.log(curPlayer.lightColor);
-    //console.log(curPlayer.darkColor);
-    //console.log(oponent.lightColor);
-    //console.log(oponent.darkColor);
-    var defaultColor = colors.gray;
-    //console.log(wordTiles.length + " length " + typeof(wordTiles[0].row));
-    //get the correct color variables and start filling new values
+    var defaultColor1 = colors.gray;
+    var defaultColor2 = colors.lightGray;
     var count = 0;
     for (var iTile in wordTiles) {
         if (iTile != "move") {
-
             console.log("count " + count);
             count = count + 1;
             var letterX = wordTiles[iTile].row;
@@ -80,7 +69,7 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
             console.log("contin");
             //console.log(wordTiles[iTile].col  + "  "  + wordTiles[iTile].text+"  "+ "obj Itile");
             //console.log(matrix[letterX][letterY] + "  " + wordTiles[iTile].text);
-            if ((wordTiles[iTile].color == defaultColor) || (wordTiles[iTile] == oponent.lightColor)) {
+            if ((wordTiles[iTile].color == defaultColor1) || (wordTiles[iTile].color == defaultColor2) || (wordTiles[iTile] == oponent.lightColor)) {
                 matrix[letterX][letterY] = curPlayer.lightColor;
                 wordTiles[iTile].color = curPlayer.lightColor;
                 console.log("update")

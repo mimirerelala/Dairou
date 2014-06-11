@@ -18,8 +18,8 @@ function mouseDownListener(evt) {
                 console.log("word submitted");
                 addToSubmittedWords(word);
                 // return tiles to their places with new color
-                //updateColors(matrixColors, wordHolder.wordLetters, gamePlayers[0], gamePlayers[1]);
-                //switchPlayers(gamePlayers);
+                updateColors(matrixColors, wordHolder.wordLetters, gamePlayers[0], gamePlayers[1]);
+                gamePlayers = switchPlayers(gamePlayers);
 
                 updateScores();
                 // clear is called last!
