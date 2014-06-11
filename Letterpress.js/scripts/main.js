@@ -34,7 +34,7 @@ function main() {
 
 
 
-    initializePlayers();
+    gamePlayers = initializePlayers();
     matrixColors = initializeColorMatrix();
 
     canvas.addEventListener("mousedown", mouseDownListener, false);
@@ -154,13 +154,14 @@ function initializePlayers() {
     var gamePlayers = [];
     gamePlayers[0] = Player1;
     gamePlayers[1] = Player2;
+    return gamePlayers;
 }
 
-function switchPlayers(playersIN) {
+function switchPlayers(playersIn) {
     playersIn[2] = playersIn[0];
     playersIn[0] = playersIn[1];
     playersIn[1] = playersIn[2];
-    return playersIN;
+    return playersIn;
 }
 
 
