@@ -1,0 +1,10 @@
+diff a/Letterpress.js/scripts/raphael-animated-circle.js b/Letterpress.js/scripts/raphael-animated-circle.js	(rejected hunks)
+@@ -80,7 +80,7 @@
+             createCircle(angle);
+             angle++;
+ 
+-            //setTimeout(frame, refreshInterval);
++            setTimeout(frame, refreshInterval);
+             //window.requestAnimationFrame(frame);
+ 
+             if (angle === 360) {
