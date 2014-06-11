@@ -25,20 +25,6 @@ function mouseDownListener(evt) {
                 // clear is called last!
                 wordHolder.clear();
             }
-
-
-            //            if (!checkIfWordRepeats(word) && isWordCorrect(word)) {
-            //                console.log("word submitted");
-            //                addToSubmittedWords(word);
-            //                // return tiles to their places with new color
-            //                updateColors(matrixColors, wordHolder.wordLetters, gamePlayers[0], gamePlayers[1]);
-            //                switchPlayers(gamePlayers);
-            //                updateScores();
-            //                // clear is called last!
-            //                wordHolder.clear();
-            //            } else {
-            //                alert('Not a valid word or word already used!');
-            //            }
         } else {
             if (clearButton.isClicked(mousePos.X, mousePos.Y)) {
                 wordHolder.clear();

@@ -1,3 +1,4 @@
-1. SVG circles animation (optmization) - ivo
 2. recoloring - mirela
 5. player counter (refactoring) villy
+
+ivo: всичко е готово
