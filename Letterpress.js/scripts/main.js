@@ -61,18 +61,30 @@ function prepareBoard() {
     wordHolder = new WordHolder(0, canvas.height / 20);
     //submitButton = new Button('Submit', 'rgb(70,130,180)', 655, 138, 40);
     //clearButton = new Button('Clear', 'rgb(70,200,180)', 655, 180, 40);
-    submitButton = new Button('Submit', 30, 'red', 'rgb(240, 239, 236)', 645, 0, 40);
-    clearButton = new Button('Clear', 30, 'darkblue', 'rgb(240, 239, 236)', 20, 0, 40);
+    submitButton = new Button('Submit', 30, 'red', 'rgb(240, 239, 236)', 645, -3, 40);
+    clearButton = new Button('Clear', 30, 'darkblue', 'rgb(240, 239, 236)', 20, -3, 40);
 }
 
 // Renders the canvas to screen
 function drawScreen() {
-    var redScoreAsString = redScore.toString();
-    var blueScoreAsString = blueScore.toString();
+  
 
     context.fillStyle = 'rgb(240, 239, 236)';
     context.fillRect(0, 0, canvas.width, canvas.height);
 
+    
+    drawScores();
+    submitButton.draw(context);
+    clearButton.draw(context);
+
+    for (var i = 0; i < tiles.length; i++)
+        tiles[i].draw(context);
+
+
+}
+function drawScores(){
+    var redScoreAsString = redScore.toString();
+    var blueScoreAsString = blueScore.toString();
     context.save();
     context.textAlign = 'center';
     context.font = 'bold 68px Calibri';
@@ -83,14 +95,6 @@ function drawScreen() {
     context.fillText(blueScoreAsString, 710, 380); //canvas.width * 0.6, canvas.heigh * 0.1);
 
     context.restore();
-
-    submitButton.draw(context);
-    clearButton.draw(context);
-
-    for (var i = 0; i < tiles.length; i++)
-        tiles[i].draw(context);
-
-
 }
 
 // Returns an array of Tile objects
