@@ -1,3 +1,4 @@
 1. SVG circles animation (optmization) - ivo
-2. recoloring - mirela
-5. player counter (refactoring) villy
+2. recoloring - mirela - done (need to fix coloring central not used square)
+3. player counter (refactoring) villy
+4. game needs to finish!
