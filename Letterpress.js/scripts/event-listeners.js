@@ -203,19 +203,3 @@ Tile.prototype.snapBack = function () {
     this.targetPosX = this.anchorX;
     this.targetPosY = this.anchorY;
 }
-
-// Goes over the board and counts the red and blue tiles
-// updates redScore and blueScore
-function updateScores() {
-    var i;
-    redScore = blueScore = 0;
-    for (i = 0; i < tiles.length; i++) {
-        var tile = tiles[i];
-        if (tile.color === colors.blue || tile.color === colors.darkBlue)
-            blueScore++;
-        if (tile.color === colors.red || tile.color === colors.darkRed)
-            redScore++;
-    }
-
-    console.log(blueScore + " : " + redScore);
-}
