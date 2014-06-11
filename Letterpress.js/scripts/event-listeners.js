@@ -14,17 +14,10 @@ function mouseDownListener(evt) {
                 console.log("word submitted");
                 addToSubmittedWords(word);
                 // return tiles to their places with new color
-<<<<<<< HEAD
-                // wordHolder.clear();
-                // updateScore();
-
-=======
                 updateColors(matrixColors, wordHolder.wordLetters, Player1, Player2);
-
                 updateScores();
                 // clear is called last!
                 wordHolder.clear();
->>>>>>> 183b5c7281723d35b4ca307ccf6a7d4ebf87527d
             } else {
                 alert('Not a valid word or word already used!');
             }

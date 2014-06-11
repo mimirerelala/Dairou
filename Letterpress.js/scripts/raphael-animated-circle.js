@@ -1,8 +1,9 @@
-﻿function prepareSvg(centerOfScreen, canvasWidth, canvasHeight) {
+﻿
+function prepareSvg(centerOfScreen, canvasWidth, canvasHeight) {
     var svgWidth = 300,
         svgHeight = 300,
-        positionX = centerOfScreen + (canvasWidth / 2),// - svgWidth,
-        positionY = (canvasHeight / 2),// - (svgHeight/2 );
+        positionX = centerOfScreen + (canvasWidth / 2), // - svgWidth,
+        positionY = (canvasHeight / 2), // - (svgHeight/2 );
         paper = Raphael(0, 0, svgWidth, svgHeight);
 
     function createCircle(angleInDegrees) {
@@ -25,7 +26,7 @@
             x = (r * Math.cos(angleInRadians)) + xCenterPoint;
             y = (r * Math.sin(angleInRadians)) + yCenterPoint;
             angleInDegrees += equalDistanceInDegrees;
-            
+
             paper.setStart();
             var translate = 't' + (x - 50) + ' ' + (y - 30)
 
@@ -36,7 +37,7 @@
             }).scale(1.2, 1.2, [30], [20]).blur(2);
             shadow.transform(translate);
 
-            var colorStick// = getRandomColor();
+            var colorStick // = getRandomColor();
             var firstIndexOfLetter = letterPressWord.indexOf('Letter');
             var lastIndexOfLetter = firstIndexOfLetter + 'Letter'.length;
             var firstIndexOfPress = letterPressWord.indexOf('Press');
@@ -44,11 +45,9 @@
 
             if (firstIndexOfLetter <= i && i < lastIndexOfLetter) {
                 colorStick = 'rgb(255, 67, 47)';
-            }
-            else if (firstIndexOfPress <= i && i < lastIndexOfPress) {
+            } else if (firstIndexOfPress <= i && i < lastIndexOfPress) {
                 colorStick = 'rgb(0, 162, 255)';
-            }
-            else {
+            } else {
                 colorStick = 'rgb(225, 225, 225)';
             }
 
