@@ -12,14 +12,9 @@ var words = [];
 var wordHolder; // holds the letters
 var boardX, boardY;
 var tileSize;
-<<<<<<< HEAD
-var redScore = 15;
-var blueScore = 5;
-=======
 var redScore = 0;
 var blueScore = 0;
 var redTurn = false;
->>>>>>> 183b5c7281723d35b4ca307ccf6a7d4ebf87527d
 
 var colors = {
     red: "rgb(247,153,141)",
@@ -40,7 +35,7 @@ function main() {
 
 
     initializePlayers();
-    matrixColors= initializeColorMatrix();
+    matrixColors = initializeColorMatrix();
 
     canvas.addEventListener("mousedown", mouseDownListener, false);
 
@@ -64,41 +59,31 @@ function prepareBoard() {
 
     tiles = makeTiles(boardLetters);
     wordHolder = new WordHolder(0, canvas.height / 20);
-<<<<<<< HEAD
     //submitButton = new Button('Submit', 'rgb(70,130,180)', 655, 138, 40);
     //clearButton = new Button('Clear', 'rgb(70,200,180)', 655, 180, 40);
-    submitButton = new Button('Submit', 30, 'red','rgb(240, 239, 236)', 645,0, 40);
+    submitButton = new Button('Submit', 30, 'red', 'rgb(240, 239, 236)', 645, 0, 40);
     clearButton = new Button('Clear', 30, 'darkblue', 'rgb(240, 239, 236)', 20, 0, 40);
-
-
-=======
-    submitButton = new Button('Submit', 'rgb(70,130,180)', 655, 138, 40);
-    clearButton = new Button('Clear', 'rgb(70,200,180)', 655, 180, 40);
->>>>>>> 183b5c7281723d35b4ca307ccf6a7d4ebf87527d
 }
 
 // Renders the canvas to screen
 function drawScreen() {
     var redScoreAsString = redScore.toString();
     var blueScoreAsString = blueScore.toString();
-       
+
     context.fillStyle = 'rgb(240, 239, 236)';
     context.fillRect(0, 0, canvas.width, canvas.height);
-<<<<<<< HEAD
 
     context.save();
     context.textAlign = 'center';
     context.font = 'bold 68px Calibri';
     context.fillStyle = 'red';
-    context.fillText(redScoreAsString, 80, 380);//canvas.width * 0.4, canvas.heigh * 0.1);
-    
+    context.fillText(redScoreAsString, 80, 380); //canvas.width * 0.4, canvas.heigh * 0.1);
+
     context.fillStyle = 'darkblue';
-    context.fillText(blueScoreAsString, 710, 380);//canvas.width * 0.6, canvas.heigh * 0.1);
+    context.fillText(blueScoreAsString, 710, 380); //canvas.width * 0.6, canvas.heigh * 0.1);
 
     context.restore();
 
-=======
->>>>>>> 183b5c7281723d35b4ca307ccf6a7d4ebf87527d
     submitButton.draw(context);
     clearButton.draw(context);
 
@@ -120,14 +105,14 @@ function makeTiles(boardLetters) {
     var lightGray = "rgb(230, 230, 230)";
 
     var tileMargin = 0; // pixels
-    tileSize = ~~(canvas.height * 0.15); // pixels
+    tileSize = ~~ (canvas.height * 0.15); // pixels
 
-    boardX = ~~((canvas.width - 5 * (tileSize + tileMargin)) / 2);
-    boardY = ~~((canvas.height - 5 * (tileSize + tileMargin)) - canvas.height / 50);
+    boardX = ~~ ((canvas.width - 5 * (tileSize + tileMargin)) / 2);
+    boardY = ~~ ((canvas.height - 5 * (tileSize + tileMargin)) - canvas.height / 50);
 
     tiles = [];
     for (i = 0; i < boardLetters.length; i++) {
-        var row = ~~(i / 5);
+        var row = ~~ (i / 5);
         var col = i % 5;
         tempX = boardX + col * (tileSize + tileMargin);
         tempY = boardY + row * (tileSize + tileMargin);
@@ -158,17 +143,16 @@ function addWord(wordToSubmit) {
 
 
 function initializePlayers() {
-    Player1 = new Player("Zhivko", colors.red, colors.darkRed );
+    Player1 = new Player("Zhivko", colors.red, colors.darkRed);
     Player2 = new Player("Villy", colors.blue, colors.darkBlue);
 }
 
 
 function initializeColorMatrix() {
-    var matrixColors =[[colors.gray,colors.gray,colors.gray,colors.gray,colors.gray],
-             [colors.gray,colors.gray,colors.gray,colors.gray,colors.gray],
-             [colors.gray,colors.gray,colors.gray,colors.gray,colors.gray],
-             [colors.gray,colors.gray,colors.gray,colors.gray,colors.gray],
-             [colors.gray,colors.gray,colors.gray,colors.gray,colors.gray]];
+    var matrixColors = [[colors.gray, colors.gray, colors.gray, colors.gray, colors.gray],
+             [colors.gray, colors.gray, colors.gray, colors.gray, colors.gray],
+             [colors.gray, colors.gray, colors.gray, colors.gray, colors.gray],
+             [colors.gray, colors.gray, colors.gray, colors.gray, colors.gray],
+             [colors.gray, colors.gray, colors.gray, colors.gray, colors.gray]];
     return matrixColors;
 }
-
