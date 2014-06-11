@@ -145,6 +145,16 @@ function addWord(wordToSubmit) {
 function initializePlayers() {
     Player1 = new Player("Zhivko", colors.red, colors.darkRed);
     Player2 = new Player("Villy", colors.blue, colors.darkBlue);
+    var gamePlayers = [];
+    gamePlayers[0] = Player1;
+    gamePlayers[1] = Player2;
+}
+
+function switchPlayers(playersIN) {
+    playersIn[2] = playersIn[0];
+    playersIn[0] = playersIn[1];
+    playersIn[1] = playersIn[2];
+    return playersIN;
 }
 
 

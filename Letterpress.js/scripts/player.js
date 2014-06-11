@@ -12,3 +12,4 @@ var gameOn = true;
 Player.prototype.play = function (context) {
     while (gameOn){}
 };
+
