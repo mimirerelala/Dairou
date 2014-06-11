@@ -58,6 +58,25 @@
      //console.log(this.word());
  };
 
+  // Rearrange the letters as the tile is being dragged
+ WordHolder.prototype.rearrangeWord = function (draggedTile) {
+     if (this.wordLetters.length == 1)
+         return;
+
+     var leftPadding = (canvas.width - this.wordLetters.length * tileSize) / 2;
+     var tileX = Math.max(draggedTile.X + (tileSize / 2) - leftPadding, 0);
+     var newIndex = Math.min(~~(tileX / tileSize), this.wordLetters.length - 1);
+
+     var oldIndex = this.wordLetters.indexOf(draggedTile);
+     if (newIndex === oldIndex) {
+         return;
+     }
+
+     // rearrange tiles
+     this.wordLetters.move(oldIndex, newIndex);
+     this.updateTilePositions(newIndex);
+ };
+
  // Update tile positions
  WordHolder.prototype.updateTilePositions = function (newIndex) {
      var leftPadding = (canvas.width - this.wordLetters.length * tileSize) / 2;
@@ -79,26 +98,7 @@
          timer = setInterval(onTimerTick, 1000 / 60);
  };
 
- // Update tile positions
- WordHolder.prototype.rearrangeWord = function (draggedTile) {
-     if (this.wordLetters.length == 1)
-         return;
-
-     var leftPadding = (canvas.width - this.wordLetters.length * tileSize) / 2;
-     var tileX = Math.max(draggedTile.X + (tileSize / 2) - leftPadding, 0);
-     var newIndex = Math.min(~~(tileX / tileSize), this.wordLetters.length - 1);
-
-     var oldIndex = this.wordLetters.indexOf(draggedTile);
-     if (newIndex === oldIndex) {
-         return;
-     }
-
-     // rearrange tiles
-     this.wordLetters.move(oldIndex, newIndex);
-     this.updateTilePositions(newIndex);
- };
-
- Array.prototype.move = function (old_index, new_index) {
+Array.prototype.move = function (old_index, new_index) {
      if (new_index >= this.length) {
          var k = new_index - this.length;
          while ((k--) + 1) {
