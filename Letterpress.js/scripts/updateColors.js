@@ -21,6 +21,8 @@ function updateScores() {
         if (tile.color === colors.red || tile.color === colors.darkRed)
             redScore++;
     }
+
+    console.log(blueScore + " : " + redScore);
 }
 
 function updateColors(matrix, wordTiles, player, oponent) {
