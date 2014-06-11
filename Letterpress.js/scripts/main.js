@@ -32,16 +32,14 @@ function main() {
     drawScreen();
     prepareSvg(document.documentElement.clientWidth / 2, canvas.width, canvas.height);
 
-    canvas.addEventListener("mousedown", mouseDownListener, false);
 
-    word = exampleWord();
-    initializeColorMatrix();
+
     initializePlayers();
     matrixColors= initializeColorMatrix();
-    console.log(wordHolder.wordLetters);
-    updateColors(matrixColors, word, Player1, Player2);
-    console.log(matrixColors);
-    console.log("submit");
+
+    canvas.addEventListener("mousedown", mouseDownListener, false);
+
+
 
 }
 
@@ -130,14 +128,6 @@ function initializePlayers() {
 }
 
 
-function exampleWord () {
-    var word = [];
-    word.push(new Tile('g',colors.gray,30,30,10,4,1));
-    word.push(new Tile('g',colors.red,30,30,10,3,1));
-    word.push(new Tile('g',colors.blue,30,30,10,0,0));
-    word.push(new Tile('g',colors.blue,30,30,10,0,1));
-    return word;
-}
 function initializeColorMatrix() {
     var matrixColors =[[colors.gray,colors.gray,colors.gray,colors.gray,colors.gray],
              [colors.gray,colors.gray,colors.gray,colors.gray,colors.gray],
