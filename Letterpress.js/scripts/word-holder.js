@@ -19,8 +19,9 @@
  WordHolder.prototype.clear = function () {
      for (var t = 0; t < this.wordLetters.length; t += 1) {
          var letter = this.wordLetters[t];
-         letter.targetPosX = letter.boardX;
-         letter.targetPosY = letter.boardY;
+         letter.anchorX = letter.boardX;
+         letter.anchorY = letter.boardY;
+         letter.snapBack();
          letter.isMoving = true;
          letter.isUsedInWord = false;
      }
@@ -63,8 +64,8 @@
          this.updateTilePositions(-1);
          tile.isUsedInWord = false;
 
-         tile.targetPosX = tile.boardX;
-         tile.targetPosY = tile.boardY;
+         tile.anchorX = tile.boardX;
+         tile.anchorY = tile.boardY;
      }
  };
 
@@ -90,13 +91,13 @@
  WordHolder.prototype.updateTilePositions = function (newIndex) {
      var leftPadding = (canvas.width - this.wordLetters.length * tileSize) / 2;
      for (var t = 0; t < this.wordLetters.length; t += 1) {
-         if (t === newIndex) {
-             this.wordLetters[t].startDragX = leftPadding + t * tileSize;
-             this.wordLetters[t].startDragY = this.Y;
-         } else {
-             this.wordLetters[t].targetPosX = leftPadding + t * tileSize;
-             this.wordLetters[t].targetPosY = this.Y;
-             this.wordLetters[t].isMoving = true;
+         var letter = this.wordLetters[t];
+         letter.anchorX = leftPadding + t * tileSize;
+         letter.anchorY = this.Y;
+
+         if (t !== newIndex) {
+             letter.snapBack();
+             letter.isMoving = true;
          }
      }
      // Start timer

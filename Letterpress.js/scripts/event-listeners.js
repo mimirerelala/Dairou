@@ -105,8 +105,8 @@ Tile.prototype.onMouseDown = function (mousePos, dragIndex) {
     this.clickOffsetY = mousePos.Y - this.Y;
 
     // remember where the tile starts from, so it can return back to this position
-    this.startDragX = this.X;
-    this.startDragY = this.Y;
+    this.anchorX = this.X;
+    this.anchorY = this.Y;
 
     // The "target" position is where the object should be if it were to move there instantaneously. But we will
     // set up the code so that this target position is approached gradually, producing a smooth motion. 
@@ -140,12 +140,12 @@ Tile.prototype.move = function () {
         this.X += easeAmount * (this.targetPosX - this.X);
         this.Y += easeAmount * (this.targetPosY - this.Y);
 
-        if ((Math.abs(this.X - this.startDragX) > 2) || (Math.abs(this.Y - this.startDragY) > 2)) {
+        if ((Math.abs(this.X - this.anchorX) > 2) || (Math.abs(this.Y - this.anchorY) > 2)) {
             this.wasDragged = true;
         }
 
         // Stop the motion when the target position is reached (close enough)
-        if ((!isDragging) && (Math.abs(this.X - this.targetPosX) < 0.1) && (Math.abs(this.Y - this.targetPosY) < 0.1)) {
+        if ((!isDragging) && (Math.abs(this.X - this.targetPosX) < 0.5) && (Math.abs(this.Y - this.targetPosY) < 0.5)) {
             // Snap the tile to its final position
             this.X = this.targetPosX;
             this.Y = this.targetPosY;
@@ -156,7 +156,11 @@ Tile.prototype.move = function () {
 
         if (isDragging && dragTile === this) {
             if (this.isUsedInWord) {
-                wordHolder.rearrangeWord(this);
+                if (this.Y + this.size / 2 < boardY) {
+                    wordHolder.rearrangeWord(this);
+                } else {
+                    wordHolder.removeTile(this);
+                }
             } else {
                 if (this.Y + this.size / 2 < boardY) {
                     wordHolder.insertTile(this);
@@ -168,7 +172,6 @@ Tile.prototype.move = function () {
 
 Tile.prototype.onMouseUp = function () {
     if (this.wasDragged) {
-
         if (!this.isUsedInWord && (this.Y - this.targetPosY > 5)) {
             // tile is not used in word and is moving up
             wordHolder.addTile(this);
@@ -176,19 +179,23 @@ Tile.prototype.onMouseUp = function () {
         } else if (this.isUsedInWord && (this.Y + this.size / 2 >= boardY)) {
             // tile is used in word and released down
             wordHolder.removeTile(this);
-
         } else {
             // return it to its starting position (where the drag started)
-            this.targetPosX = this.startDragX;
-            this.targetPosY = this.startDragY;
+            this.snapBack();
         }
-
     } else {
         // tile was clicked
         if (this.isUsedInWord) {
             wordHolder.removeTile(this);
+            this.snapBack();
         } else {
             wordHolder.addTile(this);
         }
     }
+}
+
+// Points the tile to its anchor position (where the drag started)
+Tile.prototype.snapBack = function () {
+    this.targetPosX = this.anchorX;
+    this.targetPosY = this.anchorY;
 }
