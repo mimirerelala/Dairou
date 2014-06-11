@@ -2,16 +2,6 @@
 
  // Returns an array of Tile objects
 
-Player1 = new Player("Zhivko",'red','darkRed' );
-Player2 = new Player("Villy", 'blue', 'darkBlue');
-
-
-
-console.log(Player2.lightColor);
-console.log(Player1.darkColor);
-
-
-
 
 
 function updateColors(matrix, wordTiles, player, oponent) {
@@ -24,7 +14,7 @@ function updateColors(matrix, wordTiles, player, oponent) {
 	console.log(player.darkColor);
 	console.log(oponent.lightColor);
 	console.log(oponent.darkColor);
-	var defaulColor = 'gray';
+	var defaulColor = colors.gray;
     console.log(wordTiles.length + "length");
 	//get the correct color variables and start filling new values
 	for (var i = 0; i < wordTiles.length; i++) {
@@ -74,12 +64,12 @@ function isSurrounded(arrayIn, xCoord,yCoord) {
 	return false;
 }
 
-//colors are 'r', 'rr','b','bb', 'gray'
-var matrix1 =[['gray','gray','gray','gray','gray'],
-             ['gray','gray','gray','gray','gray'],
-             ['gray','gray','gray','gray','gray'],
-             ['gray','gray','gray','gray','gray'],
-             ['gray','gray','gray','gray','gray']];
+//colors are 'r', 'rr','b','bb', colors.gray
+var matrix1 =[[colors.gray,colors.gray,colors.gray,colors.gray,colors.gray],
+             [colors.gray,colors.gray,colors.gray,colors.gray,colors.gray],
+             [colors.gray,colors.gray,colors.gray,colors.gray,colors.gray],
+             [colors.gray,colors.gray,colors.gray,colors.gray,colors.gray],
+             [colors.gray,colors.gray,colors.gray,colors.gray,colors.gray]];
 console.log(matrix1 + "arry 1 ");
 
 //var letterCoords = [[0,1],[1,0],[0,0],[4,4],[2,3]];
@@ -93,12 +83,12 @@ word = new Array();
 
 //tiles.push(new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize, posCoords));
 // Tile(text, color, posX, posY, size, coords) 
-//word = word.push(new Tile('g','gray',30,30,10,[0,1]));
-word[0] = new Tile('g','gray',30,30,10,[4,1]);
-word[1] = new Tile('g','red',30,30,10,[3,1]);
-word[2] = new Tile('g','blue',30,30,10,[0,0]);
-word[3] = new Tile('g','blue',30,30,10,[0,1]);
-word[4] = new Tile('g','blue',30,30,10,[1,0]);
+//word = word.push(new Tile('g',colors.gray,30,30,10,[0,1]));
+word[0] = new Tile('g',colors.gray,30,30,10,[4,1]);
+word[1] = new Tile('g',colors.red,30,30,10,[3,1]);
+word[2] = new Tile('g',colors.blue,30,30,10,[0,0]);
+word[3] = new Tile('g',colors.blue,30,30,10,[0,1]);
+word[4] = new Tile('g',colors.blue,30,30,10,[1,0]);
 
 //console.log(word.length + "  " + typeof(tiles) + "  " +"  " + "  word array"); 
 //console.log(m1);
