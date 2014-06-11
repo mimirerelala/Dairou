@@ -41,31 +41,39 @@ Tile.prototype.draw = function (context) {
         context.beginPath();
         context.moveTo(this.X, this.Y); //1
         context.lineTo(this.X + this.size, this.Y); //2
-        context.quadraticCurveTo((this.X + this.size * 0.9), this.Y + this.size * 0.6, (this.X + 1.25 * this.size), this.Y + this.size * 0.9); //3
-        context.quadraticCurveTo((this.X + this.size * 0.8), this.Y + this.size * 0.8, this.X + this.size * 0.25, this.Y + this.size * 1.1); //4
-        context.quadraticCurveTo(this.X + this.size * 0.1, this.Y + this.size * 0.9, this.X, this.Y); //5
+
+        // >>>>>> by villy
+        //        context.quadraticCurveTo((this.X + this.size * 0.9), this.Y + this.size * 0.6, (this.X + 1.25 * this.size), this.Y + this.size * 0.9); //3
+        //        context.quadraticCurveTo((this.X + this.size * 0.8), this.Y + this.size * 0.8, this.X + this.size * 0.25, this.Y + this.size * 1.1); //4
+        //        context.quadraticCurveTo(this.X + this.size * 0.1, this.Y + this.size * 0.9, this.X, this.Y); //5
+
+        /// >>>>> by jivko
+        context.quadraticCurveTo((this.X + this.size * 0.95), this.Y + this.size * 0.6, (this.X + 1.05 * this.size), this.Y + this.size * 0.95); //3
+        context.quadraticCurveTo((this.X + this.size * 0.55), this.Y + this.size * 0.9, this.X + this.size * 0.05, this.Y + this.size * 1.05); //4
+        context.quadraticCurveTo(this.X - this.size * 0.05, this.Y + this.size * 0.55, this.X, this.Y); //5
+
         context.shadowColor = '#999';
-         context.shadowBlur = 20;
-        context.shadowOffsetX = 15;
-        context.shadowOffsetY = 15;
+        context.shadowBlur = 8;
+        context.shadowOffsetX = 2;
+        context.shadowOffsetY = 2;
         context.fill();
-       
+
         context.restore();
         context.save();
 
         context.fillStyle = this.fontColor;
         context.font = this.font;
         context.translate(this.X + this.size * 0.5, this.Y + this.size * 0.5);
-        context.rotate(-10 * Math.PI / 180);
+        context.rotate(-0 * Math.PI / 180);
         context.translate(-(this.X + this.size * 0.5), -(this.Y + this.size * 0.5));
 
         context.fillText(
             this.text,
-         
-                this.X + (this.size / 2) - (context.measureText(this.text).width / 2),
-                this.Y + (this.size / 2) + this.fontSize / 4
+
+            this.X + (this.size / 2) - (context.measureText(this.text).width / 2),
+            this.Y + (this.size / 2) + this.fontSize / 4
         );
-        
+
         context.restore();
     }
 

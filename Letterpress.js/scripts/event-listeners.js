@@ -145,7 +145,7 @@ Tile.prototype.move = function () {
         }
 
         // Stop the motion when the target position is reached (close enough)
-        if ((!isDragging) && (Math.abs(this.X - this.targetPosX) < 0.5) && (Math.abs(this.Y - this.targetPosY) < 0.5)) {
+        if ((!isDragging) && (Math.abs(this.X - this.targetPosX) < 1) && (Math.abs(this.Y - this.targetPosY) < 1)) {
             // Snap the tile to its final position
             this.X = this.targetPosX;
             this.Y = this.targetPosY;
