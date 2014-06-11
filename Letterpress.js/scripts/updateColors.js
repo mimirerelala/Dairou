@@ -16,13 +16,12 @@ function updateScores() {
     redScore = blueScore = 0;
     for (i = 0; i < tiles.length; i++) {
         var tile = tiles[i];
-        if (tile.color == colors.blue || tile.color == colors.darkBlue)
+        if (tile.color === colors.blue || tile.color === colors.darkBlue)
             blueScore++;
-        if (tile.color == colors.rd || tile.color == colors.darkRed)
+        if (tile.color === colors.red || tile.color === colors.darkRed)
             redScore++;
     }
 }
-
 
 function updateColors(matrix, wordTiles, player, oponent) {
     //use a mask array to recalculate card colors

@@ -1,6 +1,6 @@
-﻿function generateRandomLeters() {
-    var minNumberOfVowels = 3,
-        maxNumberOfVowels = 5,
+function generateRandomLeters() {
+    var minNumberOfVowels = 5,
+        maxNumberOfVowels = 6,
         lettersCount = 25,
         exactNumberOfVowels = getRandomInt(minNumberOfVowels, maxNumberOfVowels),
         vowelsCodes = getVowelsCodes(),

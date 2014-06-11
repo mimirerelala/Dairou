@@ -1,6 +1,5 @@
-1. SVG circles animation
-2. recoloring
+1. SVG circles animation - ivo
+2. recoloring - mirela
 3. double click bug
-4. player order
-5. player counter
+5. player counter - villy
 6. word max length = 9

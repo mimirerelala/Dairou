@@ -11,14 +11,14 @@ function mouseDownListener(evt) {
         var word = wordHolder.word().toLowerCase();
         if (submitButton.isClicked(mousePos.X, mousePos.Y)) {
             if (!checkIfWordRepeats(word) && isWordCorrect(word)) {
-                alert('true');
+                console.log("word submitted");
                 addToSubmittedWords(word);
                 // return tiles to their places with new color
-                updateColors();
+                updateScores();
                 // clear is called last!
                 wordHolder.clear();
             } else {
-                alert('false');
+                alert('Not a valid word or word already used!');
             }
         } else {
             if (clearButton.isClicked(mousePos.X, mousePos.Y)) {
