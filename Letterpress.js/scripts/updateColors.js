@@ -14,56 +14,58 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
 	//console.log(curPlayer.darkColor);
 	//console.log(oponent.lightColor);
 	//console.log(oponent.darkColor);
-	var defaultColor = 'gray';
+	var defaultColor = colors.gray;
     //console.log(wordTiles.length + " length " + typeof(wordTiles[0].row));
 	//get the correct color variables and start filling new values
 	var count = 0; 
 	for (var iTile in wordTiles) {
 		console.log("count " + count);
-		count  = count +1;
+		count  = count+1;
 		var letterX = wordTiles[iTile].row;
 		var letterY = wordTiles[iTile].col;
-		console.log("row " + "col"+ letterY + " " + letterX);
+		console.log("row " + "col"+ " " + letterX + " " +letterY);
+		console.log("contin");
 		//console.log(wordTiles[iTile].col  + "  "  + wordTiles[iTile].text+"  "+ "obj Itile");
         //console.log(matrix[letterX][letterY] + "  " + wordTiles[iTile].text);
-		if ((matrix[letterX][letterY]==defaultColor)||(matrix[letterX][letterY]==oponent.lightColor)) {
+		if ((wordTiles[iTile].color==defaultColor)||(wordTiles[iTile]==oponent.lightColor)) {
 			matrix[letterX][letterY] = curPlayer.lightColor;
-			iTile.color = curPlayer.lightColor;
+			wordTiles[iTile].color = curPlayer.lightColor;
             console.log("update")
 		}
 	}
 
-	for (var iTile in wordTiles) {
-		var j = wordTiles[iTile].row;
-		var k = wordTiles[iTile].col;
+	for (var iTile in tiles) {
+		var j = tiles[iTile].row;
+		var k = tiles[iTile].col;
+		console.log(iTile);
 		console.log(j + "       j k        " + k);
 		if(isSurrounded(matrix, j, k, curPlayer)){
 			matrix[j][k]=curPlayer.darkColor;
-			iTile.color = curPlayer.darkColor;
+			tiles[iTile].color = curPlayer.darkColor;
 		}
 		
 	}
 	for (var iTile in tiles) {
-		j = iTile.row;
-		k = iTile.col;
+		j = tiles[iTile].row;
+		k = tiles[iTile].col;
 		if (matrix[j][k]==curPlayer.darkColor){
 			if (!isSurrounded(matrix, j, k, curPlayer)){
 				console.log("cleeearinng.....")
 				matrix[j][k] = curPlayer.lightColor;
-				iTile.color = curPlayer.lightColor;
+				tiles[iTile].color = curPlayer.lightColor;
 
 			}
 		}
 		else if(matrix[j][k]==oponent.darkColor){
 			if (!isSurrounded(matrix, j, k, oponent)){
 				matrix[j][k] = oponent.lightColor;
-				iTile.color = oponent.lightColor;
+				tiles[iTile].color = oponent.lightColor;
 
 			}
         }
         else if(isSurrounded(matrix, j, k, oponent)){
 			matrix[j][k]=oponent.darkColor;
-			iTile.color = oponent.darkColor;
+			tiles[iTile].color = oponent.darkColor;
 		}
 		
 	}
