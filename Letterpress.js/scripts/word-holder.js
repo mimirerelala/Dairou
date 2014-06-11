@@ -11,7 +11,7 @@
      for (var i = 1; i < this.wordLetters.length; i++) {
          word = word + this.wordLetters[i].text;
      };
-
+     console.log(word);
      return word;
  };
 
