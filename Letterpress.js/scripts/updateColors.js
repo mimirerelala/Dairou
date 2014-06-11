@@ -19,18 +19,21 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
 	//get the correct color variables and start filling new values
 	var count = 0; 
 	for (var iTile in wordTiles) {
-		console.log("count " + count);
-		count  = count+1;
-		var letterX = wordTiles[iTile].row;
-		var letterY = wordTiles[iTile].col;
-		console.log("row " + "col"+ " " + letterX + " " +letterY);
-		console.log("contin");
-		//console.log(wordTiles[iTile].col  + "  "  + wordTiles[iTile].text+"  "+ "obj Itile");
-        //console.log(matrix[letterX][letterY] + "  " + wordTiles[iTile].text);
-		if ((wordTiles[iTile].color==defaultColor)||(wordTiles[iTile]==oponent.lightColor)) {
-			matrix[letterX][letterY] = curPlayer.lightColor;
-			wordTiles[iTile].color = curPlayer.lightColor;
-            console.log("update")
+		if (iTile!="move"){
+
+			console.log("count " + count);
+			count  = count+1;
+			var letterX = wordTiles[iTile].row;
+			var letterY = wordTiles[iTile].col;
+			console.log("row " + "col"+ " " + letterX + " " +letterY);
+			console.log("contin");
+			//console.log(wordTiles[iTile].col  + "  "  + wordTiles[iTile].text+"  "+ "obj Itile");
+	        //console.log(matrix[letterX][letterY] + "  " + wordTiles[iTile].text);
+			if ((wordTiles[iTile].color==defaultColor)||(wordTiles[iTile]==oponent.lightColor)) {
+				matrix[letterX][letterY] = curPlayer.lightColor;
+				wordTiles[iTile].color = curPlayer.lightColor;
+	            console.log("update")
+			}
 		}
 	}
 
