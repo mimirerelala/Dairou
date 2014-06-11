@@ -11,14 +11,22 @@ function mouseDownListener(evt) {
         var word = wordHolder.word().toLowerCase();
         if (submitButton.isClicked(mousePos.X, mousePos.Y)) {
             if (!checkIfWordRepeats(word) && isWordCorrect(word)) {
-                alert('true');
+                console.log("word submitted");
                 addToSubmittedWords(word);
                 // return tiles to their places with new color
+<<<<<<< HEAD
                 // wordHolder.clear();
                 // updateScore();
 
+=======
+                updateColors(matrixColors, wordHolder.wordLetters, Player1, Player2);
+
+                updateScores();
+                // clear is called last!
+                wordHolder.clear();
+>>>>>>> 183b5c7281723d35b4ca307ccf6a7d4ebf87527d
             } else {
-                alert('false');
+                alert('Not a valid word or word already used!');
             }
         } else {
             if (clearButton.isClicked(mousePos.X, mousePos.Y)) {

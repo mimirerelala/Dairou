@@ -12,8 +12,14 @@ var words = [];
 var wordHolder; // holds the letters
 var boardX, boardY;
 var tileSize;
+<<<<<<< HEAD
 var redScore = 15;
 var blueScore = 5;
+=======
+var redScore = 0;
+var blueScore = 0;
+var redTurn = false;
+>>>>>>> 183b5c7281723d35b4ca307ccf6a7d4ebf87527d
 
 var colors = {
     red: "rgb(247,153,141)",
@@ -31,7 +37,14 @@ function main() {
     drawScreen();
     prepareSvg(document.documentElement.clientWidth / 2, canvas.width, canvas.height);
 
+
+
+    initializePlayers();
+    matrixColors= initializeColorMatrix();
+
     canvas.addEventListener("mousedown", mouseDownListener, false);
+
+
 
 }
 
@@ -51,12 +64,17 @@ function prepareBoard() {
 
     tiles = makeTiles(boardLetters);
     wordHolder = new WordHolder(0, canvas.height / 20);
+<<<<<<< HEAD
     //submitButton = new Button('Submit', 'rgb(70,130,180)', 655, 138, 40);
     //clearButton = new Button('Clear', 'rgb(70,200,180)', 655, 180, 40);
     submitButton = new Button('Submit', 30, 'red','rgb(240, 239, 236)', 645,0, 40);
     clearButton = new Button('Clear', 30, 'darkblue', 'rgb(240, 239, 236)', 20, 0, 40);
 
 
+=======
+    submitButton = new Button('Submit', 'rgb(70,130,180)', 655, 138, 40);
+    clearButton = new Button('Clear', 'rgb(70,200,180)', 655, 180, 40);
+>>>>>>> 183b5c7281723d35b4ca307ccf6a7d4ebf87527d
 }
 
 // Renders the canvas to screen
@@ -66,6 +84,7 @@ function drawScreen() {
        
     context.fillStyle = 'rgb(240, 239, 236)';
     context.fillRect(0, 0, canvas.width, canvas.height);
+<<<<<<< HEAD
 
     context.save();
     context.textAlign = 'center';
@@ -78,6 +97,8 @@ function drawScreen() {
 
     context.restore();
 
+=======
+>>>>>>> 183b5c7281723d35b4ca307ccf6a7d4ebf87527d
     submitButton.draw(context);
     clearButton.draw(context);
 
@@ -134,3 +155,20 @@ function addToWord(letter) {
 function addWord(wordToSubmit) {
     words.push(wordToSubmit);
 }
+
+
+function initializePlayers() {
+    Player1 = new Player("Zhivko", colors.red, colors.darkRed );
+    Player2 = new Player("Villy", colors.blue, colors.darkBlue);
+}
+
+
+function initializeColorMatrix() {
+    var matrixColors =[[colors.gray,colors.gray,colors.gray,colors.gray,colors.gray],
+             [colors.gray,colors.gray,colors.gray,colors.gray,colors.gray],
+             [colors.gray,colors.gray,colors.gray,colors.gray,colors.gray],
+             [colors.gray,colors.gray,colors.gray,colors.gray,colors.gray],
+             [colors.gray,colors.gray,colors.gray,colors.gray,colors.gray]];
+    return matrixColors;
+}
+
