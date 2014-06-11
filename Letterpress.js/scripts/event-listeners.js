@@ -15,6 +15,8 @@ function mouseDownListener(evt) {
                 addToSubmittedWords(word);
                 // return tiles to their places with new color
                 // wordHolder.clear();
+                // updateScore();
+
             } else {
                 alert('false');
             }

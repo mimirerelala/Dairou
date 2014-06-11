@@ -1,13 +1,13 @@
 ﻿// The Button class
-function Button(text, color, posX, posY, size) {
+function Button(text,fontSize,fontColor, color, posX, posY, size) {
     this.X = posX;
     this.Y = posY;
     this.color = color;
     this.size = size;
     this.text = text;
-    this.fontSize = +(0.75 * size);
+    this.fontSize = fontSize;
     this.fontFamiliy = "'Calibri'";
-    this.fontColor = 'rgb(35, 35, 35)';
+    this.fontColor = fontColor;
     this.font = "bold " + this.fontSize + "px " + this.fontFamiliy;
     this.isMoving = false;
 }
