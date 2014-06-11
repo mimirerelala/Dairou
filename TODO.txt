@@ -1,5 +1,6 @@
 1. SVG circles animation - ivo
 2. recoloring - mirela
-3. double click bug
+3. double click bug - jivko
 5. player counter - villy
-6. word max length = 9
+6. word max length = 9 - jivko
+7. requestAnimation - jivko
