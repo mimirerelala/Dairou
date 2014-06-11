@@ -24,7 +24,6 @@ function mouseDownListener(evt) {
         } else {
             if (clearButton.isClicked(mousePos.X, mousePos.Y)) {
                 wordHolder.clear();
-                //alert('clear clicked');
             }
         }
     }
