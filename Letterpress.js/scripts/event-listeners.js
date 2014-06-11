@@ -10,18 +10,35 @@ function mouseDownListener(evt) {
         // check if one of the buttons is clicked (submit, clear etc.)
         var word = wordHolder.word().toLowerCase();
         if (submitButton.isClicked(mousePos.X, mousePos.Y)) {
-            if (!checkIfWordRepeats(word) && isWordCorrect(word)) {
+            if (wordIsUsed(word)) {
+                alert('Word already used!');
+            } else if (!isWordCorrect(word)) {
+                alert('Not a valid word!');
+            } else {
                 console.log("word submitted");
                 addToSubmittedWords(word);
                 // return tiles to their places with new color
-                updateColors(matrixColors, wordHolder.wordLetters, gamePlayers[0], gamePlayers[1]);
-                switchPlayers(gamePlayers);
+                //updateColors(matrixColors, wordHolder.wordLetters, gamePlayers[0], gamePlayers[1]);
+                //switchPlayers(gamePlayers);
+
                 updateScores();
                 // clear is called last!
                 wordHolder.clear();
-            } else {
-                alert('Not a valid word or word already used!');
             }
+
+
+            //            if (!checkIfWordRepeats(word) && isWordCorrect(word)) {
+            //                console.log("word submitted");
+            //                addToSubmittedWords(word);
+            //                // return tiles to their places with new color
+            //                updateColors(matrixColors, wordHolder.wordLetters, gamePlayers[0], gamePlayers[1]);
+            //                switchPlayers(gamePlayers);
+            //                updateScores();
+            //                // clear is called last!
+            //                wordHolder.clear();
+            //            } else {
+            //                alert('Not a valid word or word already used!');
+            //            }
         } else {
             if (clearButton.isClicked(mousePos.X, mousePos.Y)) {
                 wordHolder.clear();
