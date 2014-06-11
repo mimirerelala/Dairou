@@ -11,8 +11,8 @@
      for (var i = 0; i < this.wordLetters.length; i++) {
          word = word + this.wordLetters[i].text;
      }
-     return word;
 
+     return word;
  };
 
  // Clears the letters
@@ -41,7 +41,6 @@
 
  // Inserts a tile
  WordHolder.prototype.insertTile = function (tile) {
-
      if (this.wordLetters.length == 0) {
          this.addTile(tile);
          return;
@@ -67,8 +66,6 @@
          tile.targetPosX = tile.boardX;
          tile.targetPosY = tile.boardY;
      }
-
-     //console.log(this.word());
  };
 
  // Rearrange the letters as the tile is being dragged
@@ -85,7 +82,6 @@
          return;
      }
 
-     // rearrange tiles
      this.wordLetters.move(oldIndex, newIndex);
      this.updateTilePositions(newIndex);
  };
@@ -94,9 +90,7 @@
  WordHolder.prototype.updateTilePositions = function (newIndex) {
      var leftPadding = (canvas.width - this.wordLetters.length * tileSize) / 2;
      for (var t = 0; t < this.wordLetters.length; t += 1) {
-
          if (t === newIndex) {
-
              this.wordLetters[t].startDragX = leftPadding + t * tileSize;
              this.wordLetters[t].startDragY = this.Y;
          } else {
@@ -105,7 +99,6 @@
              this.wordLetters[t].isMoving = true;
          }
      }
-
      // Start timer
      if (!timer)
          timer = setInterval(onTimerTick, 1000 / 60);
