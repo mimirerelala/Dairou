@@ -7,12 +7,12 @@
 
  // Returns the letters as string
  WordHolder.prototype.word = function () {
-     var word = this.wordLetters[0].text;
-     for (var i = 1; i < this.wordLetters.length; i++) {
+     var word = '';
+     for (var i = 0; i < this.wordLetters.length; i++) {
          word = word + this.wordLetters[i].text;
-     };
-     console.log(word);
+     }
      return word;
+
  };
 
  // Clears the letters
