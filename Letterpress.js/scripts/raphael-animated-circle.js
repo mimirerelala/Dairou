@@ -7,7 +7,6 @@
         paper = Raphael(positionX, positionY, svgWidth, svgHeight);
 
     function createCircle(angleInDegrees) {
-
         var r = 90,
             xCenterPoint = svgWidth / 2,
             yCenterPoint = svgHeight / 2,
@@ -18,7 +17,7 @@
             letterPressWord = 'Letter Press ',
             equalDistanceInDegrees = 360 / letterPressWord.length,
             translate,
-            scale,
+            scale = ' s' + 0.8 + ' ' + 0.8,
             shadow,
             stick,
             text,
@@ -37,7 +36,6 @@
             angleInDegrees += equalDistanceInDegrees;
 
             translate = ' t' + (x - 50) + ' ' + (y - 30);
-            scale = ' s' + 0.8 + ' ' + 0.8;
 
             shadow = paper.path('M 50 30 L 65,25 Q 60,35 80,50 Q 70, 40 45, 60 L  50,30');
             shadow.attr({
@@ -87,7 +85,6 @@
             angle += 1;
 
             setTimeout(frame, refreshInterval);
-            //window.requestAnimationFrame(frame);
 
             if (angle === 540) {
                 angle = 180;
