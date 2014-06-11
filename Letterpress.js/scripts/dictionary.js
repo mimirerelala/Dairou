@@ -31126,7 +31126,7 @@ function isWordCorrect(word) {
         maw:true,
         mawkish:true,
         mawkishness: true,
-        max:true;
+        max:true,
         maxi:true,
         maxim:true,
         maxima:true,
