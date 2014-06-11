@@ -1,4 +1,3 @@
 2. player counter (refactoring) -  villy
-3. game needs to finish!
+3. game needs to finish - jivko
 
-ivo: всичко е готово
