@@ -30,6 +30,7 @@ function main() {
     prepareSvg(document.documentElement.clientWidth / 2, canvas.width, canvas.height);
 
     canvas.addEventListener("mousedown", mouseDownListener, false);
+
 }
 
 function prepareCanvas() {
@@ -94,7 +95,7 @@ function makeTiles(boardLetters) {
         var rand = Math.random();
         //tempColor = rand < 0.33 ? red : rand < 0.66 ? blue : gray;
         tempColor = i % 2 ? gray : lightGray;
-        tiles.push(new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize, boardPos));
+        tiles.push(new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize, row, col));
     }
 
     return tiles;
