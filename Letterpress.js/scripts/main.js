@@ -12,6 +12,9 @@ var words = [];
 var wordHolder; // holds the letters
 var boardX, boardY;
 var tileSize;
+var redScore = 0;
+var blueScore = 0;
+var redTurn = false;
 
 var colors = {
     red: "rgb(247,153,141)",
@@ -46,18 +49,18 @@ function prepareCanvas() {
 function prepareBoard() {
     var boardLetters = generateRandomLeters();
     tiles = makeTiles(boardLetters);
-    wordHolder = new WordHolder(0, canvas.height / 20);	
+    wordHolder = new WordHolder(0, canvas.height / 20);
     submitButton = new Button('Submit', 'rgb(70,130,180)', 655, 138, 40);
-	clearButton = new Button('Clear', 'rgb(70,200,180)', 655, 180, 40);
+    clearButton = new Button('Clear', 'rgb(70,200,180)', 655, 180, 40);
 }
 
 // Renders the canvas to screen
 function drawScreen() {
     context.fillStyle = 'rgb(240, 239, 236)';
-    context.fillRect(0, 0, canvas.width, canvas.height);    
+    context.fillRect(0, 0, canvas.width, canvas.height);
     submitButton.draw(context);
-	clearButton.draw(context);
-	
+    clearButton.draw(context);
+
     for (var i = 0; i < tiles.length; i++)
         tiles[i].draw(context);
 }

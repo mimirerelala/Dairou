@@ -1,0 +1,6 @@
+1. SVG circles animation
+2. recoloring
+3. double click bug
+4. player order
+5. player counter
+6. word max length = 9

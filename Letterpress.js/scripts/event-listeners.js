@@ -14,7 +14,9 @@ function mouseDownListener(evt) {
                 alert('true');
                 addToSubmittedWords(word);
                 // return tiles to their places with new color
-                // wordHolder.clear();
+                updateColors();
+                // clear is called last!
+                wordHolder.clear();
             } else {
                 alert('false');
             }
