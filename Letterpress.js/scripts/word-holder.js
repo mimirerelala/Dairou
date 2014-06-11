@@ -18,15 +18,18 @@
  // Clears the letters
  WordHolder.prototype.clear = function () {
      for (var t = 0; t < this.wordLetters.length; t += 1) {
-         this.wordLetters[t].targetPosX = this.wordLetters[t].boardX;
-         this.wordLetters[t].targetPosY = this.wordLetters[t].boardY;
-         this.wordLetters[t].isMoving = true;
+         var letter = this.wordLetters[t];
+         letter.targetPosX = letter.boardX;
+         letter.targetPosY = letter.boardY;
+         letter.isMoving = true;
+         letter.isUsedInWord = false;
      }
+
+     this.wordLetters = [];
 
      // Start timer
      if (!timer)
          timer = setInterval(onTimerTick, 1000 / 60);
-     this.wordLetters = [];
  };
 
  // Adds a tile
