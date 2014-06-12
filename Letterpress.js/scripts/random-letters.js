@@ -11,12 +11,10 @@ function generateRandomLeters() {
         randomConsonantIndex,
         randomConsonantCode,
         letters = [],
-        currentLetter,
-        i,
-        j;
+        currentLetter;
 
     // generate vowels
-    for (i = 0; i < exactNumberOfVowels; i += 1) {
+    for (var i = 0; i < exactNumberOfVowels; i += 1) {
         randomLettersIndex = getRandomInt(0, lettersCount - 1);
         randomVowelsIndex = getRandomInt(0, vowelsCodes.length - 1);
         randomVowelCode = vowelsCodes[randomVowelsIndex];
@@ -31,7 +29,7 @@ function generateRandomLeters() {
     }
 
     // generate consonants
-    for (j = 0; j < lettersCount; j += 1) {
+    for (var j = 0; j < lettersCount; j += 1) {
         if (!letters[j]) {
             randomConsonantIndex = getRandomInt(0, consonantCodes.length - 1);
             randomConsonantCode = consonantCodes[randomConsonantIndex];
@@ -65,10 +63,9 @@ function getVowelsCodes() {
 function getConsonantCodes(vowelsCodes) {
     var startCode = 'A'.charCodeAt(0),
         endCode = 'Z'.charCodeAt(0),
-        consonants = [],
-        i;
+        consonants = [];
 
-    for (i = startCode; i <= endCode; i += 1) {
+    for (var i = startCode; i <= endCode; i += 1) {
         if (vowelsCodes.indexOf(i) === -1) {
             consonants.push(i);
         }

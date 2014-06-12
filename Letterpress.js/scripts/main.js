@@ -61,8 +61,8 @@ function prepareBoard() {
     wordHolder = new WordHolder(0, canvas.height / 20);
     //submitButton = new Button('Submit', 'rgb(70,130,180)', 655, 138, 40);
     //clearButton = new Button('Clear', 'rgb(70,200,180)', 655, 180, 40);
-    submitButton = new Button('Submit', 30, 'red', 'rgb(240, 239, 236)', 645, -3, 40);
-    clearButton = new Button('Clear', 30, 'darkblue', 'rgb(240, 239, 236)', 20, -3, 40);
+    submitButton = new Button('Submit', 30, 'rgb(255, 67, 47)', 'rgb(240, 239, 236)', 645, -3, 40);
+    clearButton = new Button('Clear', 30, 'rgb(0, 162, 255)', 'rgb(240, 239, 236)', 20, -3, 40);
 }
 
 // Renders the canvas to screen
@@ -92,10 +92,10 @@ function drawScores() {
 
     context.textAlign = 'center';
     context.font = 'bold 68px Calibri';
-    context.fillStyle = 'red';
+    context.fillStyle = 'rgb(255, 67, 47)';
     context.fillText(redScoreAsString, 80, 380); //canvas.width * 0.4, canvas.heigh * 0.1);
 
-    context.fillStyle = 'darkblue';
+    context.fillStyle = 'rgb(0, 162, 255)';
     context.fillText(blueScoreAsString, 710, 380); //canvas.width * 0.6, canvas.heigh * 0.1);
 }
 

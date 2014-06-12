@@ -69,12 +69,11 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
             console.log("contin");
             //console.log(wordTiles[iTile].col  + "  "  + wordTiles[iTile].text+"  "+ "obj Itile");
             //console.log(matrix[letterX][letterY] + "  " + wordTiles[iTile].text);
-            if ((wordTiles[iTile].color == defaultColor1) || (wordTiles[iTile].color == defaultColor2) || (wordTiles[iTile].color == oponent.lightColor)) {
+            if ((wordTiles[iTile].color == defaultColor1) || (wordTiles[iTile].color == defaultColor2) || (wordTiles[iTile] == oponent.lightColor)) {
                 matrix[letterX][letterY] = curPlayer.lightColor;
                 wordTiles[iTile].color = curPlayer.lightColor;
                 console.log("update")
             }
-
         }
     }
 
@@ -83,7 +82,8 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
             var j = tiles[iTile].row;
             var k = tiles[iTile].col;
             console.log(iTile);
-            if (isSurrounded(matrix, j, k, curPlayer)&&(tiles[iTile].color==curPlayer.lightColor)) {
+            console.log(j + "       j k        " + k);
+            if (isSurrounded(matrix, j, k, curPlayer)) {
                 matrix[j][k] = curPlayer.darkColor;
                 tiles[iTile].color = curPlayer.darkColor;
             }
@@ -91,6 +91,7 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
     }
     for (var iTile in tiles) {
         if (iTile != "move") {
+
             j = tiles[iTile].row;
             k = tiles[iTile].col;
             if (matrix[j][k] == curPlayer.darkColor) {
