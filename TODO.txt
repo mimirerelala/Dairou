@@ -1,4 +1,5 @@
 jivko:
+0. documentation
 1. remove all console log messages
 3. game end
 4. when moving a tile not all letters should be moving
