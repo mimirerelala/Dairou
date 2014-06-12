@@ -1,5 +1,8 @@
 function mouseDownListener(evt) {
     var mousePos = getMousePos(canvas, evt);
+    
+    // Prevents the mouse down from having an effect on the main browser window:
+    evt.preventDefault();
 
     // The index of the tile being clicked or -1 if no tile was clicked
     var dragIndex = getDragIndex(mousePos.X, mousePos.Y);
@@ -12,8 +15,10 @@ function mouseDownListener(evt) {
         if (submitButton.isClicked(mousePos.X, mousePos.Y)) {
             if (wordIsUsed(word)) {
                 alert('Word already used!');
+                return;
             } else if (!isWordCorrect(word)) {
                 alert('Not a valid word!');
+                return;
             } else {
                 console.log("word submitted");
                 addToSubmittedWords(word);
@@ -33,9 +38,6 @@ function mouseDownListener(evt) {
     }
     canvas.removeEventListener("mousedown", mouseDownListener, false);
     window.addEventListener("mouseup", mouseUpListener, false);
-
-    // Prevents the mouse down from having an effect on the main browser window:
-    evt.preventDefault();
 }
 
 function mouseMoveListener(evt) {

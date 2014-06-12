@@ -1,4 +1,7 @@
-2. player counter (refactoring) -  villy
-3. game needs to finish!
-
-ivo: всичко е готово
+jivko:
+1. remove all console log messages
+3. game end
+4. when moving a tile not all letters should be moving
+5. colors
+6. Hint button (AI)
+7. whose turn is it indication
