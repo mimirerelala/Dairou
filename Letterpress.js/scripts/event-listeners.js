@@ -20,7 +20,6 @@ function mouseDownListener(evt) {
                 // return tiles to their places with new color
                 updateColors(matrixColors, wordHolder.wordLetters, gamePlayers[0], gamePlayers[1]);
                 gamePlayers = switchPlayers(gamePlayers);
-
                 updateScores();
                 // clear is called last!
                 wordHolder.clear();

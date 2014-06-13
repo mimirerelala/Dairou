@@ -32,14 +32,10 @@ function main() {
     drawScreen();
     prepareSvg(document.documentElement.clientWidth / 2, canvas.width, canvas.height);
 
-
-
     gamePlayers = initializePlayers();
     matrixColors = initializeColorMatrix();
 
     canvas.addEventListener("mousedown", mouseDownListener, false);
-
-
 
 }
 

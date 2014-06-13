@@ -6,10 +6,3 @@ function Player(name, lightColor, darkColor) {
     //this.image;
 }
 
-
-var gameOn = true;
-//Main players loop
-Player.prototype.play = function (context) {
-    while (gameOn){}
-};
-
