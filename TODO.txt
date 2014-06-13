@@ -1,8 +1,11 @@
-jivko:
-0. documentation
+// before submission
 1. remove all console log messages
 3. game end
 4. when moving a tile not all letters should be moving
 5. colors
-6. Hint button (AI)
+
+// optional
 7. whose turn is it indication
+8. test mode
+6. Hint button (AI)
+9. minify dict
