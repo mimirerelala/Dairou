@@ -1,10 +1,3 @@
-// Returns an array of Tile objects
-
-Player1 = new Player("Zhivko", 'red', 'darkRed');
-Player2 = new Player("Villy", 'blue', 'darkBlue');
-
-
-
 // Goes over the board and counts the red and blue tiles
 // updates redScore and blueScore
 function updateScores() {
@@ -35,7 +28,7 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
             count = count + 1;
             var letterX = wordTiles[iTile].row;
             var letterY = wordTiles[iTile].col;
-            if ((wordTiles[iTile].color == defaultColor1) || (wordTiles[iTile].color == defaultColor2) || (wordTiles[iTile] == oponent.lightColor)) {
+            if ((wordTiles[iTile].color == defaultColor1) || (wordTiles[iTile].color == defaultColor2) || (wordTiles[iTile].color == oponent.lightColor)) {
                 matrix[letterX][letterY] = curPlayer.lightColor;
                 wordTiles[iTile].color = curPlayer.lightColor;
             }
