@@ -48,15 +48,15 @@ Tile.prototype.draw = function (context) {
         //        context.quadraticCurveTo((this.X + this.size * 0.8), this.Y + this.size * 0.8, this.X + this.size * 0.25, this.Y + this.size * 1.1); //4
         //        context.quadraticCurveTo(this.X + this.size * 0.1, this.Y + this.size * 0.9, this.X, this.Y); //5
 
-        /// >>>>> by jivko
+       
         context.quadraticCurveTo((this.X + this.size * 0.95), this.Y + this.size * 0.6, (this.X + 1.05 * this.size), this.Y + this.size * 0.95); //3
         context.quadraticCurveTo((this.X + this.size * 0.55), this.Y + this.size * 0.9, this.X + this.size * 0.05, this.Y + this.size * 1.05); //4
         context.quadraticCurveTo(this.X - this.size * 0.05, this.Y + this.size * 0.55, this.X, this.Y); //5
 
         context.shadowColor = '#999';
         context.shadowBlur = 8;
-        context.shadowOffsetX = 2;
-        context.shadowOffsetY = 2;
+        context.shadowOffsetX = 3;
+        context.shadowOffsetY = 3;
         context.fill();
 
         context.restore();
