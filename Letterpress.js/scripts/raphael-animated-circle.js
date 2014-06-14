@@ -43,7 +43,7 @@
                 fill: "#333"
             });
             shadow.transform(translate + scale);
-            shadow.scale(1.2, 1.2, [50], [35]);
+            shadow.scale(1.2, 1.2, [30], [20]);
             shadow.blur(2);
 
             //colorStick// = getRandomColor();
