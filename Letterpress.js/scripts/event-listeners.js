@@ -13,10 +13,11 @@ function mouseDownListener(evt) {
         // check if one of the buttons is clicked (submit, clear etc.)
         var word = wordHolder.word().toLowerCase();
         if (submitButton.isClicked(mousePos.X, mousePos.Y)) {
-            if (wordIsUsed(word)) {
+        	var testMode = false;
+            if (wordIsUsed(word) && !testMode) {
                 alert('Word already used!');
                 return;
-            } else if (!isWordCorrect(word)) {
+            } else if (!isWordCorrect(word) && !testMode) {
                 alert('Not a valid word!');
                 return;
             } else {
@@ -27,8 +28,12 @@ function mouseDownListener(evt) {
                 gamePlayers = switchPlayers(gamePlayers);
 
                 updateScores();
+
                 // clear is called last!
                 wordHolder.clear();
+
+                if (blueScore + redScore === 25)
+                	alert('Game Over!');
             }
         } else {
             if (clearButton.isClicked(mousePos.X, mousePos.Y)) {

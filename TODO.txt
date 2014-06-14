@@ -1,10 +1,4 @@
-// before submission
-3. game end
-
-
 // optional
-4. when moving a tile not all letters should be moving
-7. whose turn is it indication
-8. test mode
-6. Hint button (AI)
-9. minify dict
+1. when moving a tile not all letters should be moving
+2. whose turn is it indication
+3. Hint button (AI)
