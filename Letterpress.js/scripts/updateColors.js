@@ -13,8 +13,6 @@ function updateScores() {
     //console.log(blueScore + " : " + redScore);
 }
 
-
-
 //Uses a 2d matrix of colours to keep track of tile colours
 //edits the tile colour itself and recalulculates the new
 //color after word submission (when it is colled)

@@ -20,7 +20,7 @@ function mouseDownListener(evt) {
                 alert('Not a valid word!');
                 return;
             } else {
-                console.log("word submitted");
+                //console.log("word submitted");
                 addToSubmittedWords(word);
                 // return tiles to their places with new color
                 updateColors(matrixColors, wordHolder.wordLetters, gamePlayers[0], gamePlayers[1]);

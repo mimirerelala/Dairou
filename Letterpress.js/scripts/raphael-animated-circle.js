@@ -96,21 +96,3 @@
 
     drawAnimatedDivs();
 }
-
-//function getRandomValue(min, max) {
-//    'use strict';
-//    if (max === null) {
-//        max = min;
-//        min = 0;
-//    }
-
-//    return Math.floor(Math.random() * (max - min + 1)) + min;
-//}
-
-//function getRandomColor() {
-//    var red = getRandomValue(120, 255);
-//    var green = getRandomValue(120, 255);
-//    var blue = getRandomValue(120, 255);
-//    //var alfa = getRandomValue(0,1);
-//    return "rgb(" + red + "," + green + "," + blue + ")";
-//};

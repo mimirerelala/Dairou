@@ -32,15 +32,10 @@ function main() {
     drawScreen();
     prepareSvg(document.documentElement.clientWidth / 2, canvas.width, canvas.height);
 
-
-
     gamePlayers = initializePlayers();
     matrixColors = initializeColorMatrix();
 
     canvas.addEventListener("mousedown", mouseDownListener, false);
-
-
-
 }
 
 function prepareCanvas() {
@@ -59,10 +54,6 @@ function prepareBoard() {
 
     tiles = makeTiles(boardLetters);
     wordHolder = new WordHolder(0, canvas.height / 20);
-    //submitButton = new Button('Submit', 'rgb(70,130,180)', 655, 138, 40);
-    //clearButton = new Button('Clear', 'rgb(70,200,180)', 655, 180, 40);
-    //submitButton = new Button('Submit', 30, 'red', 'rgb(240, 239, 236)', 645, -3, 40);
-    //clearButton = new Button('Clear', 30, 'darkblue', 'rgb(240, 239, 236)', 20, -3, 40);
 	submitButton = new Button('Submit', 30, 'rgb(255, 67, 47)', 'rgb(240, 239, 236)', 645, -3, 40);
 	clearButton = new Button('Clear', 30, 'rgb(0, 162, 255)', 'rgb(240, 239, 236)', 20, -3, 40);
 }
@@ -73,10 +64,8 @@ function drawScreen() {
     context.fillStyle = 'rgb(240, 239, 236)';
     context.fillRect(0, 0, canvas.width, canvas.height);
 
-    context.save();
-    
+    context.save();    
     drawScores();
-
     context.restore();
 
     submitButton.draw(context);
@@ -84,7 +73,6 @@ function drawScreen() {
 
     for (var i = 0; i < tiles.length; i++)
         tiles[i].draw(context);
-
 
 }
 
@@ -94,11 +82,9 @@ function drawScores() {
 
     context.textAlign = 'center';
     context.font = 'bold 68px Calibri';
-    //context.fillStyle = 'red';
 	context.fillStyle = 'rgb(255, 67, 47)';
     context.fillText(redScoreAsString, 80, 380); //canvas.width * 0.4, canvas.heigh * 0.1);
 
-    //context.fillStyle = 'darkblue';
 	context.fillStyle = 'rgb(0, 162, 255)';
     context.fillText(blueScoreAsString, 710, 380); //canvas.width * 0.6, canvas.heigh * 0.1);
 }
@@ -133,15 +119,12 @@ function makeTiles(boardLetters) {
         };
 
         var rand = Math.random();
-        //tempColor = rand < 0.33 ? red : rand < 0.66 ? blue : gray;
         tempColor = i % 2 ? gray : lightGray;
         tiles.push(new Tile(boardLetters[i], tempColor, tempX, tempY, tileSize, row, col));
     }
 
     return tiles;
 }
-
-
 
 function addToWord(letter) {
     wordToSubmit += letter;
@@ -150,7 +133,6 @@ function addToWord(letter) {
 function addWord(wordToSubmit) {
     words.push(wordToSubmit);
 }
-
 
 function initializePlayers() {
     Player1 = new Player("Zhivko", colors.red, colors.darkRed);
@@ -167,7 +149,6 @@ function switchPlayers(playersIn) {
     playersIn[1] = playersIn[2];
     return playersIn;
 }
-
 
 function initializeColorMatrix() {
     var matrixColors = [[colors.gray, colors.gray, colors.gray, colors.gray, colors.gray],
