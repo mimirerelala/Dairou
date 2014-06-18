@@ -1,3 +1,0 @@
-// optional
-1. Hint button (AI)
-2. non-random letters
