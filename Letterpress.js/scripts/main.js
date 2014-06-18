@@ -52,7 +52,7 @@ function prepareCanvas() {
 }
 
 function prepareBoard() {
-    var boardLetters = generateRandomLeters();
+    var boardLetters = generateNonRandomLetters();
 
     tiles = makeTiles(boardLetters);
     wordHolder = new WordHolder(0, canvas.height / 20);

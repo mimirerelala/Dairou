@@ -17,7 +17,7 @@ function mouseDownListener(evt) {
             if (wordIsUsed(word) && !testMode) {
                 alert('Word already used!');
                 return;
-            } else if (!isWordCorrect(word) && !testMode) {
+            } else if (dictionary[word] === undefined && !testMode) {
                 alert('Not a valid word!');
                 return;
             } else {
