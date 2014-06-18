@@ -1,6 +1,6 @@
 function mouseDownListener(evt) {
     var mousePos = getMousePos(canvas, evt);
-    
+
     // Prevents the mouse down from having an effect on the main browser window:
     evt.preventDefault();
 
@@ -13,7 +13,7 @@ function mouseDownListener(evt) {
         // check if one of the buttons is clicked (submit, clear etc.)
         var word = wordHolder.word().toLowerCase();
         if (submitButton.isClicked(mousePos.X, mousePos.Y)) {
-        	var testMode = false;
+            var testMode = false;
             if (wordIsUsed(word) && !testMode) {
                 alert('Word already used!');
                 return;
@@ -33,7 +33,7 @@ function mouseDownListener(evt) {
                 wordHolder.clear();
 
                 if (blueScore + redScore === 25)
-                	alert('Game Over!');
+                    alert('Game Over!');
             }
         } else {
             if (clearButton.isClicked(mousePos.X, mousePos.Y)) {
@@ -158,7 +158,7 @@ Tile.prototype.move = function () {
         }
 
         // Stop the motion when the target position is reached (close enough)
-        if ((!isDragging) && (Math.abs(this.X - this.targetPosX) < 1) && (Math.abs(this.Y - this.targetPosY) < 1)) {
+        if ((!isDragging || dragTile !== this) && (Math.abs(this.X - this.targetPosX) < 1) && (Math.abs(this.Y - this.targetPosY) < 1)) {
             // Snap the tile to its final position
             this.X = this.targetPosX;
             this.Y = this.targetPosY;

@@ -93,10 +93,12 @@
      var leftPadding = (canvas.width - this.wordLetters.length * tileSize) / 2;
      for (var t = 0; t < this.wordLetters.length; t += 1) {
          var letter = this.wordLetters[t];
+         var oldAnchorX = letter.anchorX;
+         var oldAnchorY = letter.anchorY;
          letter.anchorX = leftPadding + t * tileSize;
          letter.anchorY = this.Y;
 
-         if (t !== newIndex) {
+         if (t !== newIndex && (letter.anchorX !== oldAnchorX || letter.anchorY !== oldAnchorY)) {
              letter.snapBack();
              letter.isMoving = true;
          }
