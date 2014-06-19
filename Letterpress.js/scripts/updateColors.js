@@ -37,7 +37,7 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
         if (iTile != "move") {
             var j = tiles[iTile].row;
             var k = tiles[iTile].col;
-            if (isSurrounded(matrix, j, k, curPlayer)) {
+            if (tiles[iTile].color === curPlayer.lightColor && isSurrounded(matrix, j, k, curPlayer)) {
                 matrix[j][k] = curPlayer.darkColor;
                 tiles[iTile].color = curPlayer.darkColor;
             }
@@ -57,7 +57,7 @@ function updateColors(matrix, wordTiles, curPlayer, oponent) {
                     matrix[j][k] = oponent.lightColor;
                     tiles[iTile].color = oponent.lightColor;
                 }
-            } else if (isSurrounded(matrix, j, k, oponent)) {
+            } else if (matrix[j][k] === oponent.lightColor && isSurrounded(matrix, j, k, oponent)) {
                 matrix[j][k] = oponent.darkColor;
                 tiles[iTile].color = oponent.darkColor;
             }
@@ -93,4 +93,3 @@ function isSurrounded(arrayIn, xCoord, yCoord, playerIn) {
     }
     return false;
 }
-
